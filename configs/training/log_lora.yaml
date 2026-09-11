@@ -1,0 +1,10 @@
+model_type: "lora_transformer"
+base_model_name: "pyToshka/wazuh-assist"
+lora_rank: 8
+lora_alpha: 16
+lora_dropout: 0.05
+max_seq_length: 64
+batch_size: 32
+epochs: 5
+learning_rate: 0.0001
+warmup_ratio: 0.1
