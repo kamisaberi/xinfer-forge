@@ -1,0 +1,10 @@
+model_type: "autoencoder"
+input_dim: 32
+latent_dim: 4
+mask_ratio: 0.20
+epochs: 15
+batch_size: 64
+learning_rate: 0.002
+weight_decay: 0.0001
+loss_function: "mse"
+early_stopping_patience: 3
