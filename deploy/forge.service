@@ -1,0 +1,14 @@
+[Unit]
+Description=xInfer Forge Autonomous Continuous Adaptation Service
+After=network.target sentinel.service
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/home/kami/blackbox-sentinel/xinfer-forge
+ExecStart=/usr/bin/python3 -m forge.main --config configs/forge_config.yaml
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
