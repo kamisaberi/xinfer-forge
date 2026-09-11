@@ -1,0 +1,23 @@
+appliance:
+  sentinel_api_url: "http://localhost:8443"
+  db_path: "/home/kami/blackbox-sentinel/build/blackbox_audit.db"
+  models_dir: "/home/kami/blackbox-sentinel/models"
+  checkpoints_dir: "./checkpoints"
+
+training:
+  device: "cpu"                  # "cpu" or "cuda"
+  input_dim: 32                  # Matching 32 NetFlow features
+  epochs: 10
+  batch_size: 64
+  learning_rate: 0.002
+  mask_ratio: 0.20               # Mask 20% of features for Self-Supervised Learning
+  min_samples_to_train: 100
+
+safety:
+  golden_benchmark_path: "configs/safety/golden_attacks.yaml"
+  min_golden_detection_rate: 1.00 # Must detect 100% of non-negotiable attacks
+  max_allowed_reconstruction_drift: 0.25
+
+export:
+  onnx_output_name: "network_threat_v2.onnx"
+  opset_version: 17
