@@ -1,0 +1,11 @@
+model_type: "contrastive_vision"
+input_shape: [3, 224, 224]
+embedding_dim: 128
+temperature: 0.07
+batch_size: 32
+epochs: 10
+learning_rate: 0.0005
+augmentation:
+  temporal_jitter_sec: 1.5
+  brightness_jitter: 0.15
+  horizontal_flip: 0.5
