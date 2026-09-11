@@ -1,0 +1,17 @@
+# Non-negotiable attack vectors that the model must NEVER adapt to or forget.
+golden_attacks:
+  - id: "ATTACK_PORTSCAN_SYN"
+    description: "High-Frequency SYN Scan on Ports 1-1000"
+    features: [0.95, 0.88, 0.99, 0.12, 0.85, 0.90, 0.77, 0.81, 0.92, 0.84,
+               0.90, 0.75, 0.80, 0.85, 0.95, 0.90, 0.88, 0.92, 0.95, 0.89,
+               0.91, 0.85, 0.88, 0.94, 0.90, 0.85, 0.82, 0.89, 0.92, 0.87,
+               0.99, 0.95]
+    expected_threat_score_min: 0.80
+
+  - id: "ATTACK_MODBUS_UNAUTHORIZED_WRITE"
+    description: "SCADA PLC Coil Override on Port 502"
+    features: [0.05, 0.99, 0.95, 0.88, 0.90, 0.92, 0.85, 0.89, 0.94, 0.90,
+               0.88, 0.91, 0.85, 0.82, 0.89, 0.92, 0.87, 0.99, 0.95, 0.90,
+               0.88, 0.84, 0.90, 0.75, 0.80, 0.85, 0.95, 0.90, 0.88, 0.92,
+               0.95, 0.89]
+    expected_threat_score_min: 0.85
