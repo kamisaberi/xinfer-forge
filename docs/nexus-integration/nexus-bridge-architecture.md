@@ -359,31 +359,3 @@ def test_closed_loop_adaptation_parity():
     print("[+] Closed-Loop Validation Test Passed: Model adapted safely without regression.")
 ```
 ```
-
----
-
-### Complete in Part 6
-- `xinfer-forge/docs/nexus-integration/nexus-bridge-architecture.md`
-- `xinfer-forge/docs/nexus-integration/dataset-discovery-watcher.md`
-- `xinfer-forge/docs/nexus-integration/parsing-curated-csv-batches.md`
-- `xinfer-forge/docs/nexus-integration/active-learning-uncertainty-gate.md`
-- `xinfer-forge/docs/nexus-integration/automated-wrapper-script.md`
-- `xinfer-forge/docs/nexus-integration/closed-loop-validation-testing.md`
-
-All 6 Nexus Fleet Integration files for `xinfer-forge` are now generated.
-
----
-
-### Files to be Generated in Part 7
-
-The next phase covers the **`forge-cli` Command Reference** (`cli-reference/` - 7 files):
-
-1. `cli-reference/cli-overview.md` (Command syntax, flags, and environment variables)
-2. `cli-reference/command-train.md` (`forge-cli train`: Manual dataset training execution)
-3. `cli-reference/command-validate-safety.md` (`forge-cli validate-safety`: Standalone golden gate audit)
-4. `cli-reference/command-export-onnx.md` (`forge-cli export-onnx`: Standalone ONNX compilation)
-5. `cli-reference/command-stage.md` (`forge-cli stage`: Remote staging to Sentinel Nexus)
-6. `cli-reference/command-auto-cycle.md` (`forge-cli auto-cycle`: Autonomous infinite adaptation loop)
-7. `cli-reference/configuration-files.md` (Structure of `forge_config.yaml` and hyperparameter files)
-
-Confirm when you are ready to proceed with Part 7.
