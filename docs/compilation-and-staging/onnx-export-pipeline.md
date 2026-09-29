@@ -356,28 +356,3 @@ During Canary deployment, `sentinel-nexus` tracks operational SLAs from the edge
 | **Edge Hardware Failure** | NPU driver timeout / kernel panic trace | Restores CPU reference backend. |
 ```
 
----
-
-### Complete in Part 5
-- `xinfer-forge/docs/compilation-and-staging/onnx-export-pipeline.md`
-- `xinfer-forge/docs/compilation-and-staging/dynamic-batch-axes.md`
-- `xinfer-forge/docs/compilation-and-staging/cryptographic-hashing-sha256.md`
-- `xinfer-forge/docs/compilation-and-staging/nexus-rest-staging-api.md`
-- `xinfer-forge/docs/compilation-and-staging/staged-rollout-lifecycle.md`
-
-All 5 Compilation & Staging files for `xinfer-forge` are now generated.
-
----
-
-### Files to be Generated in Part 6
-
-The next phase covers **Nexus Fleet Integration** (`nexus-integration/` - 6 files):
-
-1. `nexus-integration/nexus-bridge-architecture.md` (Architecture of `forge/nexus_bridge.py`)
-2. `nexus-integration/dataset-discovery-watcher.md` (Monitoring `/var/lib/sentinel-nexus/forge_datasets/`)
-3. `nexus-integration/parsing-curated-csv-batches.md` (Reading `forge_dataset_*.csv` and manifests)
-4. `nexus-integration/active-learning-uncertainty-gate.md` (Filtering vectors in $[0.40, 0.60]$ entropy window)
-5. `nexus-integration/automated-wrapper-script.md` (Executing `deploy/run_nexus_adaptation.sh`)
-6. `nexus-integration/closed-loop-validation-testing.md` (Verifying model v2 resolves zero-days missed by model v1)
-
-Confirm when you are ready to proceed with Part 6.
