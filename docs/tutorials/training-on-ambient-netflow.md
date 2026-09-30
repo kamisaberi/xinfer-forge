@@ -398,28 +398,3 @@ docker exec -it sentinel-forge nc -zv 10.240.0.10 9443
 docker logs -f sentinel-forge
 ```
 ```
-
----
-
-### Complete in Part 8
-- `xinfer-forge/docs/tutorials/training-on-ambient-netflow.md`
-- `xinfer-forge/docs/tutorials/adding-custom-golden-attacks.md`
-- `xinfer-forge/docs/tutorials/tuning-mae-masking-ratio.md`
-- `xinfer-forge/docs/tutorials/recovering-from-poisoning-alerts.md`
-- `xinfer-forge/docs/tutorials/deploying-forge-in-vmware.md`
-
-All 5 practical tutorials for `xinfer-forge` are now generated.
-
----
-
-### Files to be Generated in Part 9
-
-The next phase covers **Benchmarking & Performance Profiling** (`benchmarking/` - 5 files):
-
-1. `benchmarking/methodology.md` (Benchmark metrics, continuous drift simulation, and testbeds)
-2. `benchmarking/drift-adaptation-curves.md` (6-month accuracy comparison: Static 64.2% vs. Forge 98.0%)
-3. `benchmarking/poisoning-resilience-experiments.md` (Empirical results under active adversarial poisoning waves)
-4. `benchmarking/cpu-vs-gpu-training-speed.md` (Execution benchmarks: 4-Core Intel CPU 18s vs. NVIDIA L4 1.8s)
-5. `benchmarking/resource-footprint.md` (Disk consumption, checkpoint pruning, and memory usage)
-
-Confirm when you are ready to proceed with Part 9.
