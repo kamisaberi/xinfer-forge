@@ -259,26 +259,3 @@ To prevent storage exhaustion on local NVMe or eMMC flash storage:
 * **Pruning Invariant:** Only the **latest verified checkpoint** and the **active production model** are retained on disk. Intermediate epoch checkpoints are discarded automatically upon training completion.
 ```
 
----
-
-### Complete in Part 9
-- `xinfer-forge/docs/benchmarking/methodology.md`
-- `xinfer-forge/docs/benchmarking/drift-adaptation-curves.md`
-- `xinfer-forge/docs/benchmarking/poisoning-resilience-experiments.md`
-- `xinfer-forge/docs/benchmarking/cpu-vs-gpu-training-speed.md`
-- `xinfer-forge/docs/benchmarking/resource-footprint.md`
-
-All 5 Benchmarking & Performance Profiling files for `xinfer-forge` are now generated.
-
----
-
-### Files to be Generated in Part 10
-
-The next phase covers **AI Safety & Regulatory Compliance** (`compliance/` - 4 files):
-
-1. `compliance/eu-ai-act-article-15.md` (Satisfying High-Risk AI mandates for robustness and anti-poisoning)
-2. `compliance/nist-sp-800-218-ssdf.md` (Validating AI model integrity under Task PW.8.1)
-3. `compliance/auditing-training-runs.md` (Immutable logging of loss curves, sample counts, and hashes)
-4. `compliance/data-privacy-zero-egress.md` (Proving zero PII/customer data leakage in self-supervised learning)
-
-Confirm when you are ready to proceed with Part 10.
