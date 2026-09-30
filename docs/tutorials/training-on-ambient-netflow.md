@@ -410,29 +410,3 @@ nexus_bridge:
 ```
 ```
 
----
-
-### Complete in Part 7
-- `xinfer-forge/docs/cli-reference/cli-overview.md`
-- `xinfer-forge/docs/cli-reference/command-train.md`
-- `xinfer-forge/docs/cli-reference/command-validate-safety.md`
-- `xinfer-forge/docs/cli-reference/command-export-onnx.md`
-- `xinfer-forge/docs/cli-reference/command-stage.md`
-- `xinfer-forge/docs/cli-reference/command-auto-cycle.md`
-- `xinfer-forge/docs/cli-reference/configuration-files.md`
-
-All 7 CLI Reference files for `xinfer-forge` are now generated.
-
----
-
-### Files to be Generated in Part 8
-
-The next phase covers **Practical Step-by-Step Tutorials** (`tutorials/` - 5 files):
-
-1. `tutorials/training-on-ambient-netflow.md` (End-to-end retraining on raw industrial network captures)
-2. `tutorials/adding-custom-golden-attacks.md` (Embedding new proprietary zero-day signatures into the safety gate)
-3. `tutorials/tuning-mae-masking-ratio.md` (Optimizing tabular masking for SCADA vs. enterprise IT traffic)
-4. `tutorials/recovering-from-poisoning-alerts.md` (Investigating why a candidate model was rejected by the safety gate)
-5. `tutorials/deploying-forge-in-vmware.md` (Configuring Forge inside `sentinel-matrix` Docker/VMware mesh)
-
-Confirm when you are ready to proceed with Part 8.
