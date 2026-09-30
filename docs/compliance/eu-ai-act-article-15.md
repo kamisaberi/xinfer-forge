@@ -225,27 +225,3 @@ The 32-dimensional continuous feature vectors consumed by `TabularMAE` contain *
 * **GDPR Article 25 (Data Protection by Design):** Because raw personal data is never ingested into model weights, the model is not subject to "right-to-be-forgotten" parameter extraction vulnerabilities.
 ```
 
----
-
-### Complete in Part 10
-- `xinfer-forge/docs/compliance/eu-ai-act-article-15.md`
-- `xinfer-forge/docs/compliance/nist-sp-800-218-ssdf.md`
-- `xinfer-forge/docs/compliance/auditing-training-runs.md`
-- `xinfer-forge/docs/compliance/data-privacy-zero-egress.md`
-
-All 4 AI Safety & Regulatory Compliance files for `xinfer-forge` are now generated.
-
----
-
-### Files to be Generated in Part 11 (Final Phase for Project 4)
-
-The final phase covers **Troubleshooting & Help Desk Diagnostics** (`troubleshooting/` - 6 files), completing the entire documentation tree for `xinfer-forge`:
-
-1. `troubleshooting/loss-divergence-and-nans.md` (Resolving exploding gradients and numerical instability in MAE)
-2. `troubleshooting/safety-gate-rejection-guide.md` (Debugging false negatives during golden attack regression audits)
-3. `troubleshooting/nexus-staging-failures.md` (Resolving REST timeouts, connection refused, and invalid URLs)
-4. `troubleshooting/python-pep668-venv-issues.md` (Fixing Ubuntu 24.04/26.04 externally-managed-environment errors)
-5. `troubleshooting/faq.md` (Technical Frequently Asked Questions)
-6. `troubleshooting/support.md` (Issue reporting, security disclosures, and enterprise support SLAs)
-
-Confirm when you are ready to proceed with Part 11.
