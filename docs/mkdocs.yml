@@ -1,0 +1,92 @@
+site_name: xInfer Forge Docs
+site_description: Edge-native continual learning with immutable anti-poisoning gates.
+repo_url: https://github.com/kamisaberi/xinfer-forge
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - search.suggest
+    - content.code.copy
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
+nav:
+  - Home: index.md
+  - Getting Started:
+  - Getting Started:
+    - "Architecture at a Glance": getting-started/architecture-at-a-glance.md
+    - "Installation": getting-started/installation.md
+    - "Overview": getting-started/overview.md
+    - "Quickstart: First Adaptation": getting-started/quickstart-first-adaptation.md
+    - "System Requirements": getting-started/system-requirements.md
+    - "Verifying Setup": getting-started/verifying-setup.md
+  - Architecture:
+    - "Air-Gapped Execution Model": architecture/air-gapped-execution-model.md
+    - "Closed-Loop Flywheel Design": architecture/closed-loop-flywheel-design.md
+    - "Continual Learning Architecture": architecture/continual-learning-architecture.md
+    - "The Adversarial Poisoning Problem": architecture/the-adversarial-poisoning-problem.md
+    - "The Concept Drift Problem": architecture/the-concept-drift-problem.md
+  - Self-Supervised Engine:
+    - "Hyperparameter Tuning": self-supervised-engine/hyperparameter-tuning.md
+    - "InfoNCE Contrastive Learning": self-supervised-engine/infonce-contrastive-learning.md
+    - "Latent Embedding Space": self-supervised-engine/latent-embedding-space.md
+    - "Loss Optimization Math": self-supervised-engine/loss-optimization-math.md
+    - "MAE Architecture": self-supervised-engine/mae-architecture.md
+    - "Neural Layer Specifications": self-supervised-engine/neural-layer-specifications.md
+    - "Stochastic Masking Strategy": self-supervised-engine/stochastic-masking-strategy.md
+  - Safety Regression Gate:
+    - "Alert Dispatch on Regression": safety-regression-gate/alert-dispatch-on-regression.md
+    - "Automated Purge Circuit": safety-regression-gate/automated-purge-circuit.md
+    - "Golden Attacks Corpus": safety-regression-gate/golden-attacks-corpus.md
+    - "Safety Gate Philosophy": safety-regression-gate/safety-gate-philosophy.md
+    - "Threat Categories Covered": safety-regression-gate/threat-categories-covered.md
+    - "TPM PCR Sealing": safety-regression-gate/tpm-pcr-sealing.md
+    - "Zero-Tolerance Math": safety-regression-gate/zero-tolerance-math.md
+  - Compilation & Staging:
+    - "Cryptographic Hashing (SHA-256)": compilation-and-staging/cryptographic-hashing-sha256.md
+    - "Dynamic Batch Axes": compilation-and-staging/dynamic-batch-axes.md
+    - "Nexus REST Staging API": compilation-and-staging/nexus-rest-staging-api.md
+    - "ONNX Export Pipeline": compilation-and-staging/onnx-export-pipeline.md
+    - "Staged Rollout Lifecycle": compilation-and-staging/staged-rollout-lifecycle.md
+  - Nexus Integration:
+    - "Active Learning Uncertainty Gate": nexus-integration/active-learning-uncertainty-gate.md
+    - "Automated Wrapper Script": nexus-integration/automated-wrapper-script.md
+    - "Closed-Loop Validation Testing": nexus-integration/closed-loop-validation-testing.md
+    - "Dataset Discovery Watcher": nexus-integration/dataset-discovery-watcher.md
+    - "Nexus Bridge Architecture": nexus-integration/nexus-bridge-architecture.md
+    - "Parsing Curated CSV Batches": nexus-integration/parsing-curated-csv-batches.md
+  - CLI Reference:
+    - "CLI Overview": cli-reference/cli-overview.md
+    - "Command: auto-cycle": cli-reference/command-auto-cycle.md
+    - "Command: export-onnx": cli-reference/command-export-onnx.md
+    - "Command: stage": cli-reference/command-stage.md
+    - "Command: train": cli-reference/command-train.md
+    - "Command: validate-safety": cli-reference/command-validate-safety.md
+    - "Configuration Files": cli-reference/configuration-files.md
+  - Tutorials:
+    - "Adding Custom Golden Attacks": tutorials/adding-custom-golden-attacks.md
+    - "Deploying Forge in VMware": tutorials/deploying-forge-in-vmware.md
+    - "Recovering from Poisoning Alerts": tutorials/recovering-from-poisoning-alerts.md
+    - "Training on Ambient NetFlow": tutorials/training-on-ambient-netflow.md
+    - "Tuning MAE Masking Ratio": tutorials/tuning-mae-masking-ratio.md
+  - Benchmarking:
+    - "CPU vs. GPU Training Speed": benchmarking/cpu-vs-gpu-training-speed.md
+    - "Drift Adaptation Curves": benchmarking/drift-adaptation-curves.md
+    - "Benchmark Methodology": benchmarking/methodology.md
+    - "Poisoning Resilience Experiments": benchmarking/poisoning-resilience-experiments.md
+    - "Resource Footprint": benchmarking/resource-footprint.md
+  - Compliance:
+    - "Auditing Training Runs": compliance/auditing-training-runs.md
+    - "Data Privacy & Zero Egress": compliance/data-privacy-zero-egress.md
+    - "EU AI Act Article 15": compliance/eu-ai-act-article-15.md
+    - "NIST SP 800-218 SSDF": compliance/nist-sp-800-218-ssdf.md
+  - Troubleshooting:
+    - "Technical FAQ": troubleshooting/faq.md
+    - "Loss Divergence & NaNs": troubleshooting/loss-divergence-and-nans.md
+    - "Nexus Staging Failures": troubleshooting/nexus-staging-failures.md
+    - "Python PEP 668 venv Issues": troubleshooting/python-pep668-venv-issues.md
+    - "Safety Gate Rejection Guide": troubleshooting/safety-gate-rejection-guide.md
+    - "Support Channels": troubleshooting/support.md
