@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/nexus-integration/closed-loop-validation-testing.md`
-
-```markdown
 # Closed-Loop Verification: Model v2 Resolves v1 Edge Cases
 
 To verify that the continual active learning loop functions as intended, `xinfer-forge` provides an automated **Closed-Loop Parity Test**. 
@@ -64,5 +59,4 @@ def test_closed_loop_adaptation_parity():
     is_safe = gate.evaluate_and_enforce(model_v1, "/tmp/candidate.pt")
     assert is_safe is True, "Candidate model regressed on historic golden attacks!"
     print("[+] Closed-Loop Validation Test Passed: Model adapted safely without regression.")
-```
 ```

@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/nexus-integration/dataset-discovery-watcher.md`
-
-```markdown
 # Dataset Discovery & Inotify Watcher Loop
 
 `xinfer-forge` monitors `/var/lib/sentinel-nexus/forge_datasets/` for incoming training batches emitted by the fleet curator using the Linux **`inotify`** kernel subsystem.
@@ -57,6 +52,5 @@ class DatasetWatcher:
         manifest_file.rename(self.processed_dir / manifest_file.name)
         if lock_file.exists():
             lock_file.unlink()
-```
 ```
 

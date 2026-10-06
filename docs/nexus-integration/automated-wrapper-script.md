@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/nexus-integration/automated-wrapper-script.md`
-
-```markdown
 # Automated Wrapper Script (`deploy/run_nexus_adaptation.sh`)
 
 `run_nexus_adaptation.sh` orchestrates the complete continual adaptation loop. It handles virtual environment activation, checks lockfiles, executes `forge-cli auto-cycle`, and manages logging output.
@@ -63,6 +58,5 @@ Persistent=true
 
 [Install]
 WantedBy=timers.target
-```
 ```
 

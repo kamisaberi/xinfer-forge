@@ -1,12 +1,3 @@
-### Part 6: Nexus Fleet Integration (`nexus-integration/*`)
-
-This section contains 6 technical implementation guides detailing the bidirectional bridge between `xinfer-forge` and `sentinel-nexus`: the bridge service architecture, inotify dataset discovery, CSV batch parsing, active learning uncertainty gating, the autonomous wrapper execution script, and closed-loop validation verification.
-
----
-
-### File: `xinfer-forge/docs/nexus-integration/nexus-bridge-architecture.md`
-
-```markdown
 # Nexus Bridge Architecture (`forge/nexus_bridge.py`)
 
 `nexus_bridge.py` operates as an internal communication client within `xinfer-forge`. It coordinates filesystem discovery of newly curated datasets written by `sentinel-nexus` (`DatasetCurator.cpp`), submits candidate artifacts to the fleet staging API, and monitors canary rollout progression.
@@ -43,5 +34,4 @@ This section contains 6 technical implementation guides detailing the bidirectio
 1. **Atomic File Ingestion:** The bridge ignores partial writes by reacting only to the Linux kernel `IN_CLOSE_WRITE` inotify event.
 2. **Crash Resilience:** If `nexus_bridge.py` restarts mid-adaptation, it checks for `.lock` state files to avoid duplicate training passes over the same dataset.
 3. **Decoupled Failure Domains:** If the Nexus HTTP endpoint is unreachable, the compiled ONNX model remains cached locally on disk ready for deferred transmission.
-```
 
