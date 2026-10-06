@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/troubleshooting/support.md`
-
-```markdown
 # Enterprise Support SLAs & Incident Escalation
 
 ---
@@ -44,5 +39,4 @@ For technical inquiries and enterprise SLA contracts:
 If you identify an adversarial evasion vector, safety gate bypass, or potential vulnerability in `xinfer-forge`:
 * Send an encrypted PGP message to **`security@aryorithm.com`**.
 * We acknowledge disclosures within **48 hours** and provide CVE assignment, risk remediation, and backported security patches according to coordinated disclosure guidelines.
-```
 

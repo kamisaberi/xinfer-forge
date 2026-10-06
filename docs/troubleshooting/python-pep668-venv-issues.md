@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/troubleshooting/python-pep668-venv-issues.md`
-
-```markdown
 # Resolving Python PEP 668 Virtual Environment Issues
 
 On modern Linux distributions (such as **Ubuntu 24.04 LTS and Ubuntu 26.04**), running `pip install` globally results in a system block:
@@ -59,6 +54,5 @@ which forge-cli
 
 head -n 1 /usr/local/bin/forge-cli
 # Expected: #!/opt/sentinel-stack/venv/bin/python3
-```
 ```
 

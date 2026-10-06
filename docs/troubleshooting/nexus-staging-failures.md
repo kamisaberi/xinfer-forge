@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/troubleshooting/nexus-staging-failures.md`
-
-```markdown
 # Nexus Staging Failures & REST API Troubleshooting
 
 This guide resolves errors encountered when `forge-cli stage` dispatches compiled ONNX models to `sentinel-nexus` on port **9443**.
@@ -59,6 +54,5 @@ Ensure the model was exported cleanly without intermediate disk truncation:
 ```bash
 forge-cli export-onnx --checkpoint /tmp/candidate.pt --output-onnx /tmp/verified.onnx
 forge-cli stage --onnx-model /tmp/verified.onnx --manifest /tmp/verified.manifest.json
-```
 ```
 

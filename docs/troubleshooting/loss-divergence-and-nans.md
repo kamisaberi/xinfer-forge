@@ -1,12 +1,3 @@
-### Part 11: Troubleshooting & Help Desk Diagnostics (`troubleshooting/*`)
-
-This final section covers numerical stability troubleshooting, safety gate rejection diagnosis, Nexus REST API staging connectivity, Python PEP 668 virtual environment resolution, technical FAQs, and enterprise support SLAs for `xinfer-forge`.
-
----
-
-### File: `xinfer-forge/docs/troubleshooting/loss-divergence-and-nans.md`
-
-```markdown
 # Resolving Loss Divergence, Exploding Gradients & NaNs
 
 During continual retraining on uncurated ambient network telemetry, anomalous outliers (e.g., massive byte bursts or unnormalized port values) can cause numerical instability, leading to gradient explosion and `NaN` (Not-a-Number) loss values.
@@ -52,6 +43,5 @@ If loss diverges during the first epoch, reduce the initial step size:
 
 ```bash
 forge-cli train --data /tmp/ambient_flows.csv --learning-rate 0.0001 --epochs 5
-```
 ```
 

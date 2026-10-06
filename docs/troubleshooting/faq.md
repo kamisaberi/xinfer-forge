@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/troubleshooting/faq.md`
-
-```markdown
 # Technical Frequently Asked Questions (FAQ)
 
 ---
@@ -29,5 +24,4 @@ Every candidate model must pass the **immutable Golden Attacks Safety Gate** (`c
 
 ### Q5: What happens if an edge appliance is completely air-gapped?
 `xinfer-forge` executes 100% on-premises within the local security perimeter. It generates zero external network requests and incurs **$0.00 cloud egress fees**.
-```
 

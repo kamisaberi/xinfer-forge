@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/safety-regression-gate/safety-gate-rejection-guide.md`
-
-```markdown
 # Safety Gate Rejection Diagnostics & Remediation
 
 When candidate weights fail the Golden Attacks Safety Gate, `forge-cli` exits with code `2` (`EXIT_SAFETY_VIOLATION`), logs the failure to `/var/log/sentinel/forge_adaptation.log`, and purges the checkpoint file.
@@ -35,5 +30,4 @@ tail -n 30 /var/log/sentinel/forge_adaptation.log | grep -A 2 -B 2 "FAIL"
 | **Learning Rate Too High** | Early layer features destroyed after Epoch 1. | Reduce `--learning-rate` to `0.0005` with Cosine Annealing. |
 | **Adversarial Poisoning** | Quarantined CSV contains clusters closely matching the missed exploit. | Purge the contaminated batch from `/var/lib/sentinel-nexus/forge_datasets/`. |
 | **Corrupted Normalization** | Feature values exceed $[0.0, 1.0]$ bounds. | Re-validate min-max clamping rules in `model_config.yaml`. |
-```
 
