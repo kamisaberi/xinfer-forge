@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/compilation-and-staging/staged-rollout-lifecycle.md`
-
-```markdown
 # The Staged Rollout Lifecycle & RollbackGuard
 
 Deploying newly trained weights directly to thousands of edge defense appliances presents operational risk. `sentinel-nexus` manages model deployment through a **three-stage rollout lifecycle** protected by automated rollback circuits.
@@ -44,5 +39,4 @@ During Canary deployment, `sentinel-nexus` tracks operational SLAs from the edge
 | **Mitigation Latency** | $> 1{,}000\,\mu\text{s}$ SLA breach | Instant downgrade to `network_threat_v1.onnx`. |
 | **False Positive Surge** | Drop rate spikes $> 500\%$ over moving average | Reverts in-kernel eBPF drop rules immediately. |
 | **Edge Hardware Failure** | NPU driver timeout / kernel panic trace | Restores CPU reference backend. |
-```
 

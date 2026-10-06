@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/compilation-and-staging/nexus-rest-staging-api.md`
-
-```markdown
 # Nexus Fleet REST Staging API (`POST /api/v1/ota/stage`)
 
 Once compiled and verified, candidate model artifacts are staged to the central fleet hub (`sentinel-nexus`) via its authenticated REST management API on port **9443**.
@@ -66,6 +61,5 @@ def stage_model_to_nexus(
     else:
         print(f"[-] Staging failed [{response.status_code}]: {response.text}")
         return False
-```
 ```
 

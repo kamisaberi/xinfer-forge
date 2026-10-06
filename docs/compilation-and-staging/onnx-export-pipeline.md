@@ -1,12 +1,3 @@
-### Part 5: Model Compilation & Fleet Staging (`compilation-and-staging/*`)
-
-This section contains 5 technical implementation guides detailing the model compilation and fleet distribution pipeline of `xinfer-forge`: compiling PyTorch weights to ONNX Opset 17, configuring dynamic batch axes, generating SHA-256 cryptographic manifests, dispatching models via the Nexus REST API, and managing the multi-stage canary rollout lifecycle.
-
----
-
-### File: `xinfer-forge/docs/compilation-and-staging/onnx-export-pipeline.md`
-
-```markdown
 # ONNX Opset 17 Export Pipeline (`forge/export/onnx_exporter.py`)
 
 Once candidate model weights pass the zero-tolerance Golden Attacks Safety Gate, `xinfer-forge` compiles the native PyTorch checkpoint (`.pt`) into a production-grade **ONNX (Open Neural Network Exchange)** artifact targeting **Opset 17**.
@@ -110,6 +101,5 @@ def export_to_onnx(
 
     print(f"[+] ONNX export verified and written to: {out_file}")
     return str(out_file)
-```
 ```
 

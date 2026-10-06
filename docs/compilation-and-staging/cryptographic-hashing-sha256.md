@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/compilation-and-staging/cryptographic-hashing-sha256.md`
-
-```markdown
 # Cryptographic SHA-256 Hashing & Integrity Manifests
 
 To prevent in-transit tampering, man-in-the-middle weight injection, and filesystem corruption, every compiled ONNX artifact is packaged with a signed cryptographic manifest.
@@ -67,6 +62,5 @@ def generate_manifest(onnx_path: str, model_version: str, gate_score: float) -> 
         json.dump(manifest_data, f, indent=2)
 
     return str(manifest_path)
-```
 ```
 

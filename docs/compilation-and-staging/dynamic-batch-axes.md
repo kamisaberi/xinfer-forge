@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/compilation-and-staging/dynamic-batch-axes.md`
-
-```markdown
 # Dynamic Batch Axes: Single-Frame to Saturation Ingestion
 
 Edge intrusion prevention requires models to handle two distinct operational extremes:
@@ -47,6 +42,5 @@ def verify_dynamic_shapes(onnx_path: str):
         print(f"[PASS] Dynamic Batch Size Verified: Shape [{batch_size}, 32]")
 
 verify_dynamic_shapes("/tmp/network_threat_v2.onnx")
-```
 ```
 
