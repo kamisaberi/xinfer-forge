@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/self-supervised-engine/hyperparameter-tuning.md`
-
-```markdown
 # Hyperparameter Tuning & Training Baselines
 
 Continual learning at the edge requires bounded training budgets to avoid CPU starvation. `xinfer-forge` defaults to validated hyperparameters optimized for stability across continuous training runs.
@@ -32,6 +27,5 @@ from torch.optim.lr_scheduler import CosineAnnealingLR
 
 optimizer = torch.optim.AdamW(model.parameters(), lr=0.001, weight_decay=1e-4)
 scheduler = CosineAnnealingLR(optimizer, T_max=epochs, eta_min=1e-5)
-```
 ```
 

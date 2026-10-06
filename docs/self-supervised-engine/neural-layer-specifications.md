@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/self-supervised-engine/neural-layer-specifications.md`
-
-```markdown
 # Neural Layer Specifications: Projections & Activations
 
 To ensure deterministic compilation to ONNX Opset 17 and hardware acceleration across edge NPUs (Intel OpenVINO, Rockchip RKNN, HailoRT), `xinfer-forge` utilizes standard mathematical operations without custom unquantizable layers.
@@ -27,5 +22,4 @@ $$\text{Total Trainable Weights} = 528 + 136 + 144 + 544 + \text{Norm Params} = 
 $$\text{LeakyReLU}(x) = \begin{cases} x, & \text{if } x \ge 0 \\ 0.1 \cdot x, & \text{if } x < 0 \end{cases}$$
 
 Standard `ReLU` causes "dying neuron" syndrome during continual retraining on sparse tabular network data. `LeakyReLU(0.1)` maintains continuous gradient flow through negative activation values while mapping cleanly to edge integer quantization (INT8) primitives.
-```
 

@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/self-supervised-engine/loss-optimization-math.md`
-
-```markdown
 # Composite Loss Optimization Formulation
 
 During continual training cycles, `xinfer-forge` optimizes a composite loss objective combining the **Masked Reconstruction Error ($\mathcal{L}_{\text{MAE}}$)** and the **Temporal Contrastive Penalty ($\mathcal{L}_{\text{InfoNCE}}$)**.
@@ -55,6 +50,5 @@ class CompositeForgeLoss(nn.Module):
         # 3. Composite Objective
         total_loss = mse_loss + (self.lambda_contrastive * contrastive_loss)
         return total_loss
-```
 ```
 

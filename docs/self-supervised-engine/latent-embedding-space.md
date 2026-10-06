@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/self-supervised-engine/latent-embedding-space.md`
-
-```markdown
 # Latent Bottleneck Geometry ($z \in \mathbb{R}^8$) & Anomaly Separation
 
 The core bottleneck of `TabularMAE` compresses the 32-dimensional input vector down to an **8-dimensional latent space** ($z \in \mathbb{R}^8$). This bottleneck forces the network to retain only the essential physical and protocol invariants of normal operations.
@@ -42,5 +37,4 @@ When anomalous traffic (e.g., a port scan, Stuxnet register injection, or C2 bea
 ```
 
 Because the decoder was trained exclusively to reconstruct vectors lying on the dense baseline manifold, passing an outlier $z_{\text{anomaly}}$ results in severe reconstruction error across physical dimensions, triggering an in-kernel drop ($< 0.84\,\mu\text{s}$) on the edge appliance.
-```
 

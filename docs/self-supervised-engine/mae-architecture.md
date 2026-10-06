@@ -1,12 +1,3 @@
-### Part 3: Self-Supervised Machine Learning Engine (`self-supervised-engine/*`)
-
-This section contains 7 technical specifications and PyTorch implementations detailing the machine learning core of `xinfer-forge`: the 32-dimensional Masked Autoencoder (MAE) topology, stochastic tabular masking, InfoNCE contrastive temporal regularization, 8-dimensional latent space geometry, composite loss optimization math, neural layer definitions, and hyperparameter tuning guidelines.
-
----
-
-### File: `xinfer-forge/docs/self-supervised-engine/mae-architecture.md`
-
-```markdown
 # 32-Dimensional Tabular Masked Autoencoder (MAE) Topology
 
 `xinfer-forge` utilizes an asymmetric **Masked Autoencoder (MAE)** tailored specifically for continuous, 32-dimensional cyber-physical network flow vectors. It forces the network to learn the structural dependencies between network protocol headers, flow duration statistics, and physical SCADA metrics without requiring labeled threat data.
@@ -95,5 +86,4 @@ class TabularMAE(nn.Module):
 
 * **Lightweight Edge Memory:** The entire model comprises **$1{,}632\text{ parameters}$**, consuming $< 7\text{ KB}$ of RAM for FP32 weights.
 * **Microsecond Evaluation SLA:** Exports directly to ONNX Opset 17, evaluating in **$< 11.4\,\mu\text{s}$** on edge NPUs via `libxinfer.so`.
-```
 

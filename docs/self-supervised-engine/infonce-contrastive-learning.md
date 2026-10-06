@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/self-supervised-engine/infonce-contrastive-learning.md`
-
-```markdown
 # InfoNCE Contrastive Representation Learning
 
 While the Masked Autoencoder forces the model to reconstruct intra-flow feature dependencies, it does not inherently account for temporal continuity across related network flows. 
@@ -68,6 +63,5 @@ class InfoNCELoss(nn.Module):
         labels = torch.zeros(query.size(0), dtype=torch.long, device=query.device)
 
         return F.cross_entropy(logits, labels)
-```
 ```
 

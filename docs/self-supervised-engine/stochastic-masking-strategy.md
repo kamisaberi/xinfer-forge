@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/self-supervised-engine/stochastic-masking-strategy.md`
-
-```markdown
 # Stochastic Feature Masking Strategy for Tabular Flow Vectors
 
 In computer vision MAE models (e.g., He et al.), masking is applied to spatial image patches. In tabular cyber-physical telemetry, individual features represent distinct physical and protocol dimensions (e.g., packet counts, TCP window sizes, Modbus register setpoints). 
@@ -55,6 +50,5 @@ def generate_tabular_mask(batch_size: int, feature_dim: int = 32, p_mask: float 
     prob_matrix = torch.full((batch_size, feature_dim), p_mask, device=device)
     mask = torch.bernoulli(prob_matrix)
     return mask
-```
 ```
 
