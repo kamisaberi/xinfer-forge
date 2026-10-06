@@ -1,12 +1,3 @@
-### Part 7: `forge-cli` Command Reference (`cli-reference/*`)
-
-This section contains 7 technical reference guides covering the `forge-cli` binary: global syntax, environment variable overrides, subcommands (`train`, `validate-safety`, `export-onnx`, `stage`, `auto-cycle`), and declarative configuration manifests.
-
----
-
-### File: `xinfer-forge/docs/cli-reference/cli-overview.md`
-
-```markdown
 # `forge-cli` Command Line Interface Overview
 
 `forge-cli` is the primary executable interface for `xinfer-forge`. It provides modular commands for model training, anti-poisoning validation, ONNX compilation, fleet staging, and autonomous background execution.
@@ -52,5 +43,4 @@ forge-cli [OPTIONS] COMMAND [ARGS]...
 | `1` | `EXIT_GENERAL_ERROR` | Runtime error, missing file, or invalid configuration. |
 | `2` | `EXIT_SAFETY_VIOLATION` | Safety Gate rejection: Candidate model failed $\ge 1$ golden attack. |
 | `3` | `EXIT_NEXUS_UNREACHABLE`| Staging error: Fleet orchestrator returned HTTP error or timeout. |
-```
 

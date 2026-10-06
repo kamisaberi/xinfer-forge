@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/cli-reference/command-validate-safety.md`
-
-```markdown
 # Command: `forge-cli validate-safety`
 
 Audits a candidate PyTorch checkpoint against the immutable golden attack corpus (`golden_attacks.yaml`). Enforces the non-negotiable zero-tolerance regression invariant ($S(\theta^*) = 1.000$).
@@ -74,6 +69,5 @@ If candidate weights miss a historical exploit:
 [*] Purge Circuit Triggered: Overwriting and deleting /tmp/candidate_weights.pt
 [*] Alert dispatched to Sentinel-Nexus. Exit Code 2.
 ================================================================================
-```
 ```
 

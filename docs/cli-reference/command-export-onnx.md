@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/cli-reference/command-export-onnx.md`
-
-```markdown
 # Command: `forge-cli export-onnx`
 
 Compiles a validated PyTorch checkpoint into an ONNX Opset 17 binary with dynamic batch axes, generating an accompanying cryptographic SHA-256 manifest.
@@ -47,6 +42,5 @@ forge-cli export-onnx \
 [+] Artifacts generated:
     Model    : /opt/sentinel/models/network_threat_v2.onnx (7,412 bytes)
     Manifest : /opt/sentinel/models/network_threat_v2.manifest.json
-```
 ```
 

@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/cli-reference/command-stage.md`
-
-```markdown
 # Command: `forge-cli stage`
 
 Submits an exported ONNX model and its cryptographic manifest to `sentinel-nexus` via its authenticated REST API (`POST /api/v1/ota/stage`), initiating a canary fleet rollout.
@@ -46,6 +41,5 @@ forge-cli stage \
     Model Version : 2.4.0
     Deployment ID : stage-8f1c2a04
     Current State : STAGE_SHADOW_MODE (48-Hour Baseline Evaluation)
-```
 ```
 

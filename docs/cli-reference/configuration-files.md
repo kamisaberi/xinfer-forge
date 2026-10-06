@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/cli-reference/configuration-files.md`
-
-```markdown
 # Master Configuration Manifest (`forge_config.yaml`)
 
 All default hyperparameters, directories, and fleet endpoints can be declared in `/etc/sentinel/forge_config.yaml`.
@@ -55,6 +50,3 @@ nexus_bridge:
   watch_dir: "/var/lib/sentinel-nexus/forge_datasets"
   poll_interval_seconds: 5
 ```
-```
-
----

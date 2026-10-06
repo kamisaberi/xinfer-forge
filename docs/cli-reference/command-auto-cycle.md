@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/cli-reference/command-auto-cycle.md`
-
-```markdown
 # Command: `forge-cli auto-cycle`
 
 Launches the continuous, autonomous active learning daemon. In this mode, `forge-cli` monitors `/var/lib/sentinel-nexus/forge_datasets/`, training, validating, exporting, and staging models without operator intervention.
@@ -48,6 +43,5 @@ sudo journalctl -u sentinel-forge -f
 [INFO] forge-cli: Compiling to ONNX Opset 17 -> network_threat_v2.onnx
 [INFO] forge-cli: Staged to Nexus Hub. Candidate promoted to STAGE_SHADOW_MODE.
 [INFO] forge-cli: Batch archived to processed/. Returning to watcher loop.
-```
 ```
 
