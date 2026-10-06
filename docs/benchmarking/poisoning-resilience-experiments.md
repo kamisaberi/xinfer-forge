@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/benchmarking/poisoning-resilience-experiments.md`
-
-```markdown
 # Adversarial Poisoning Resilience Experiments
 
 To prove the efficacy of the **Golden Attacks Safety Gate**, we benchmarked `xinfer-forge` against deliberate adversarial data poisoning ("boiling-the-frog") waves, comparing an unprotected continual autoencoder against Forge's zero-tolerance gate.
@@ -60,5 +55,4 @@ An adversary introduces synthetic malicious samples into the training stream, gr
 ## 3. Conclusion
 
 At Cycle 8, when the unprotected model's residual error on Industroyer2 dipped below $\tau = 0.082$, `xinfer-forge`'s automated purge circuit triggered, immediately deleting the compromised checkpoint, alerting the SOC, and keeping the unpoisoned baseline active.
-```
 

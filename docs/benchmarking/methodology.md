@@ -1,12 +1,3 @@
-### Part 9: Benchmarking & Performance Profiling (`benchmarking/*`)
-
-This section contains 5 empirical benchmarking studies and performance profiling reports for `xinfer-forge`: continuous concept drift simulation methodologies, 6-month adaptation stability curves, adversarial poisoning resilience experiments, CPU vs. GPU training execution speeds, and memory/disk footprint measurements.
-
----
-
-### File: `xinfer-forge/docs/benchmarking/methodology.md`
-
-```markdown
 # Benchmarking Methodology & Continual Drift Protocols
 
 Evaluating continual learning systems requires testing beyond static train/test dataset splits. Traditional static benchmarks fail to capture how models behave when network distributions shift or when adversaries deliberately inject poisoned telemetry.
@@ -58,5 +49,4 @@ Experiments simulate realistic network drift across $180\text{ operational days}
 $$R_{\text{forget}} = \frac{\text{Accuracy}_{\text{Day 0}}(\theta_{\text{Day 0}}) - \text{Accuracy}_{\text{Day 0}}(\theta_{\text{Day 180}})}{\text{Accuracy}_{\text{Day 0}}(\theta_{\text{Day 0}})}$$
 
 In `xinfer-forge`, the Golden Attacks Safety Gate mathematically bounds $R_{\text{forget}} = 0.000$.
-```
 

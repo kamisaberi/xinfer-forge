@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/benchmarking/cpu-vs-gpu-training-speed.md`
-
-```markdown
 # Training Execution Speeds: Edge CPU vs. Enterprise GPU
 
 `xinfer-forge` is engineered to adapt models within constrained execution budgets. This benchmark evaluates the wall-clock execution time and energy required to train a standard **5,000-flow batch across 5 epochs**.
@@ -39,5 +34,4 @@
 
 1. **Edge CPU Feasibility:** Even on fanless edge hardware lacking a discrete GPU (e.g., Intel Core Ultra or Rockchip), adaptation completes in **under 25 seconds**, easily fitting within an hourly adaptation cycle.
 2. **Negligible Thermal Impact:** Consuming under $220\,\text{Joules}$ per adaptation cycle ensures edge appliances do not trigger thermal throttling.
-```
 

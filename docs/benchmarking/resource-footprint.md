@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/benchmarking/resource-footprint.md`
-
-```markdown
 # Resource Footprint: Memory, Disk & Retention Auditing
 
 `xinfer-forge` operates within constrained edge footprints, enforcing strict garbage collection, memory pooling, and automated checkpoint pruning.
@@ -36,5 +31,4 @@ To prevent storage exhaustion on local NVMe or eMMC flash storage:
 * **Active Verified Baseline:** Stored as `network_threat_v1.onnx` ($7.4\text{ KB}$).
 * **Candidate Checkpoint:** Stored as `candidate_weights.pt` ($18.2\text{ KB}$).
 * **Pruning Invariant:** Only the **latest verified checkpoint** and the **active production model** are retained on disk. Intermediate epoch checkpoints are discarded automatically upon training completion.
-```
 

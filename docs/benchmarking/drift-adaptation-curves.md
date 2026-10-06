@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/benchmarking/drift-adaptation-curves.md`
-
-```markdown
 # 6-Month Accuracy Comparison: Static Model vs. `xinfer-forge`
 
 This study evaluates the real-world operational decay of a static intrusion detection model versus an autonomous, continually adapting model running `xinfer-forge` over a 180-day simulated timeline.
@@ -48,5 +43,4 @@ This study evaluates the real-world operational decay of a static intrusion dete
 
 * **Static Failure Mode:** By Day 180, the static model generated an **$18.50\%$ false-positive rate**, triggering over $25{,}000$ false alarms per day and forcing operators to disable the alerting system.
 * **Continual Stability:** `xinfer-forge` maintained an average detection accuracy of **$98.0\%$** and a false-positive rate of **$< 0.03\%$**, continually updating the representation manifold to match plant expansion.
-```
 
