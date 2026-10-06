@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/getting-started/architecture-at-a-glance.md`
-
-```markdown
 # Architecture at a Glance
 
 The diagram below maps the interaction between real-time network traffic ingestion, uncertainty-based active learning selection, self-supervised continual learning in `xinfer-forge`, and Canary deployment to the edge fleet.
@@ -57,6 +52,5 @@ The diagram below maps the interaction between real-time network traffic ingesti
  ┌──────────────────────────────────────────────────────────────────────────────────────────┐
  │ Production Fleet Appliances (Hot Reload via POST /api/v1/control/reload-model)           │
  └──────────────────────────────────────────────────────────────────────────────────────────┘
-```
 ```
 

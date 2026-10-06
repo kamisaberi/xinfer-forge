@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/getting-started/system-requirements.md`
-
-```markdown
 # System Requirements & Prerequisites
 
 Review the toolchain, virtual environment requirements, and hardware dependencies before running `xinfer-forge`.
@@ -43,6 +38,5 @@ numpy >= 1.24.0, < 2.0.0
 pyyaml >= 6.0.1
 requests >= 2.31.0
 tqdm >= 4.66.0
-```
 ```
 

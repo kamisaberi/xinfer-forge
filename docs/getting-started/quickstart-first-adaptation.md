@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/getting-started/quickstart-first-adaptation.md`
-
-```markdown
 # 5-Minute Quickstart: Your First Model Adaptation Run
 
 This walkthrough guides you through executing a 5-minute training and validation cycle on a mock 32-dimensional NetFlow batch using `forge-cli`.
@@ -82,6 +77,5 @@ Evaluating Corpus: configs/safety/golden_attacks.yaml (52 Historic Exploits)
 Regression Audit Result: 52/52 Attacks Detected (Score: 1.000 / Required: 1.000)
 Status: CANDIDATE MODEL IS CRYPTOGRAPHICALLY SECURE & APPROVED FOR ONNX EXPORT.
 ================================================================================
-```
 ```
 

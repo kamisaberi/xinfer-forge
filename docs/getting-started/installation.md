@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/getting-started/installation.md`
-
-```markdown
 # Package Installation & Virtual Environment Setup
 
 To comply with modern Linux system package standards (PEP 668), `xinfer-forge` is installed within a dedicated, isolated virtual environment at `/opt/sentinel-stack/venv`.
@@ -65,6 +60,5 @@ forge-cli --version
 ### Expected Output
 ```text
 xinfer-forge version 2.4.0 (Aryorithm Continual AI Engine)
-```
 ```
 

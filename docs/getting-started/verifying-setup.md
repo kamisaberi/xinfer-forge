@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/getting-started/verifying-setup.md`
-
-```markdown
 # Verifying Your Environment & Diagnostic Self-Test
 
 Confirm that the PyTorch execution backend, ONNX compiler, and mathematical dependencies are configured properly.
@@ -63,6 +58,5 @@ onnx_model = onnx.load('/tmp/test_export.onnx')
 onnx.checker.check_model(onnx_model)
 print('[+] ONNX Opset 17 Export & Checker Succeeded!')
 "
-```
 ```
 
