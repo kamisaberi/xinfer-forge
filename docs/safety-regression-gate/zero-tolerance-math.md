@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/safety-regression-gate/zero-tolerance-math.md`
-
-```markdown
 # Zero-Tolerance Regression Mathematics
 
 In `xinfer-forge`, safety validation is formulated as a **strict logical conjunction**. A candidate model is approved if and only if every golden attack vector produces a reconstruction error exceeding the baseline anomaly threshold.
@@ -38,5 +33,4 @@ If even a single attack $a_k$ yields $\mathcal{E}(a_k; \theta^*) \le \tau$:
 $$S(\theta^*) = 1 \wedge 1 \wedge \dots \wedge 0 \wedge \dots \wedge 1 = 0.000$$
 
 The logical conjunction fails, aborting compilation and deployment.
-```
 

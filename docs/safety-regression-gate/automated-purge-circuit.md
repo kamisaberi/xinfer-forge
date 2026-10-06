@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/safety-regression-gate/automated-purge-circuit.md`
-
-```markdown
 # The Automated Purge Circuit (`safety_gate.py`)
 
 If candidate weights fail the safety gate ($S(\theta^*) < 1.000$), `xinfer-forge` triggers the **Automated Purge Circuit**, physically deleting candidate weights from storage and restoring the previous verified baseline.
@@ -83,6 +78,5 @@ class SafetyGate:
                 f.write(os.urandom(p.stat().st_size))
             p.unlink()
             print(f"[*] Candidate checkpoint {checkpoint_path} purged from disk.")
-```
 ```
 

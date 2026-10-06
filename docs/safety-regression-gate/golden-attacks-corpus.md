@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/safety-regression-gate/golden-attacks-corpus.md`
-
-```markdown
 # Golden Attacks Corpus Structure (`golden_attacks.yaml`)
 
 The golden attack corpus is declared in `configs/safety/golden_attacks.yaml`. It contains normalized 32-dimensional feature vectors representing authentic historical exploits, protocol injections, and zero-day attacks.
@@ -80,5 +75,4 @@ attacks:
 ## 2. In-Memory Vector Representation
 
 Vectors in `golden_attacks.yaml` are stored normalized according to the transformation rules declared in Subsystem `ModelConfig`. Values are loaded into contiguous PyTorch evaluation tensors during startup.
-```
 

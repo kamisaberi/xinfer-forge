@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/safety-regression-gate/alert-dispatch-on-regression.md`
-
-```markdown
 # Alert Dispatch on Regression: CISO Escalation Protocol
 
 A failure at the safety gate is treated as a suspected **Adversarial Data Poisoning Attack** rather than an ordinary training error. When the purge circuit fires, `xinfer-forge` dispatches high-priority incident notifications to the central fleet hub (`sentinel-nexus`).
@@ -54,5 +49,4 @@ A failure at the safety gate is treated as a suspected **Adversarial Data Poison
 ```
 
 The source CSV dataset that produced the poisoned weights is moved to `/var/lib/sentinel-nexus/quarantine/` for forensic review by threat intelligence analysts.
-```
 

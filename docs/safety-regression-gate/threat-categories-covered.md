@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/safety-regression-gate/threat-categories-covered.md`
-
-```markdown
 # Threat Categories Covered in the Golden Attacks Suite
 
 The golden attack corpus spans four distinct tactical categories aligned with the **MITRE ATT&CK for ICS** and **Enterprise matrices**.
@@ -46,5 +41,4 @@ The golden attack corpus spans four distinct tactical categories aligned with th
 ### Category 3: Command & Control (C2) and Exfiltration
 * **MITRE T1071.001 (Web Protocols):** Cobalt Strike, Sliver, and Metasploit malleable C2 HTTP/HTTPS beacon profiles.
 * **MITRE T1048.003 (Exfiltration Over Unencrypted Protocol):** Automated bulk extraction of radiological DICOM PACS files over port 104.
-```
 
