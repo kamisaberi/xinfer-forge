@@ -1,7 +1,3 @@
-
-### File: `xinfer-forge/docs/index.md`
-
-```markdown
 # xInfer Forge (`forge-cli`)
 
 **Continual Edge Learning, Self-Supervised Tabular MAE & Anti-Poisoning Gate**  
@@ -63,5 +59,4 @@ Before any fine-tuned candidate model can be compiled or deployed to edge applia
 2. **Zero-Tolerance Anti-Poisoning Invariant:** Candidate model weights that fail to detect $100.00\%$ of historical exploits in the immutable golden attack corpus are purged automatically ($S(\theta^*) = 1.000$).
 3. **Data Sovereignty ($0.00 Egress):** 100% on-premises edge execution. Raw payload vectors and fine-tuned weights never leave the customer's security boundary.
 4. **Standardized Hardware Portability:** Compiles directly to **ONNX Opset 17** with dynamic batch dimensions (`[batch_size, 32]`), ready for immediate zero-copy ingestion across all 15 silicon targets in `libxinfer.so`.
-```
 

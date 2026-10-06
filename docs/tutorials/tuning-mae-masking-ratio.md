@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/tutorials/tuning-mae-masking-ratio.md`
-
-```markdown
 # Tuning the Tabular MAE Masking Ratio for SCADA vs. IT Traffic
 
 In self-supervised learning, the masking ratio controls the difficulty of the reconstruction task. Industrial SCADA traffic (deterministic polling) requires different masking dynamics than enterprise IT traffic (dynamic web/burst traffic).
@@ -45,5 +40,4 @@ forge-cli train --data /tmp/scada_flows.csv --masking-ratio 0.35 --epochs 5
 | **0.25 (SCADA Optimal)**| **$0.0078$** | **Exceptional ($\Delta_{\text{outlier}} > 0.22$)** | **$< 0.01\%$** |
 | **0.35 (Mixed IT Optimal)**| **$0.0112$** | **Strong ($\Delta_{\text{outlier}} > 0.18$)** | **$0.05\%$** |
 | **0.60 (Over-Masked)** | $0.0450$ (High noise) | Degraded (Information collapse) | $8.4\%$ |
-```
 

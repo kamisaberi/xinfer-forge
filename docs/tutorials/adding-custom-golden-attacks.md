@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/tutorials/adding-custom-golden-attacks.md`
-
-```markdown
 # Embedding Proprietary Zero-Day Signatures into the Safety Gate
 
 Every industrial plant features unique equipment, non-standard Modbus register mappings, or proprietary PLC logic blocks. 
@@ -76,6 +71,5 @@ forge-cli validate-safety --update-tpm-seal
 [+] New Corpus Digest: 8a2f3c1e42c994b13a7b41e2d901000000000000000000000000000000000000
 [*] Sealing measurement into /dev/tpmrm0 (PCR 14)...
 [+] TPM 2.0 Sealing Complete. All future adaptation cycles now enforce Vector 53!
-```
 ```
 

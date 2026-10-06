@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/tutorials/deploying-forge-in-vmware.md`
-
-```markdown
 # Deploying Forge Inside the `sentinel-matrix` VMware Mesh
 
 This tutorial demonstrates how to configure and run `xinfer-forge` inside the encapsulated digital twin testbed (`sentinel-matrix`), assigning it static IP **`10.240.0.20`** on the isolated `10.240.0.0/24` subnet.
@@ -65,5 +60,4 @@ docker exec -it sentinel-forge nc -zv 10.240.0.10 9443
 
 # 3. Follow Forge continual adaptation logs
 docker logs -f sentinel-forge
-```
 ```

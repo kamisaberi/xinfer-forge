@@ -1,12 +1,3 @@
-### Part 8: Practical Step-by-Step Tutorials (`tutorials/*`)
-
-This section contains 5 practical, end-to-end tutorials for `xinfer-forge`: retraining models on raw industrial network captures, embedding custom site-specific zero-days into the immutable safety gate, tuning tabular masking ratios for SCADA vs. IT traffic, triaging adversarial data poisoning alerts, and deploying Forge within the `sentinel-matrix` VMware digital twin mesh.
-
----
-
-### File: `xinfer-forge/docs/tutorials/training-on-ambient-netflow.md`
-
-```markdown
 # End-to-End Retraining on Raw Industrial Network Captures
 
 This tutorial demonstrates how to extract continuous 32-dimensional telemetry vectors from raw industrial network traffic (PCAP or NetFlow feeds), train a `TabularMAE` candidate model, verify safety compliance, and export an updated ONNX model.
@@ -102,6 +93,5 @@ forge-cli export-onnx \
     --checkpoint /tmp/candidate_weights.pt \
     --output-onnx /opt/sentinel/models/network_threat_v2.onnx \
     --model-version 2.4.0
-```
 ```
 

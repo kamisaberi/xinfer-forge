@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/tutorials/recovering-from-poisoning-alerts.md`
-
-```markdown
 # Investigating & Recovering from Adversarial Poisoning Rejections
 
 When candidate weights fail the Golden Attacks Safety Gate, `xinfer-forge` triggers the automated purge circuit, deletes the weights, and logs a critical alert. 
@@ -89,6 +84,5 @@ Once the malicious cluster is purged from the quarantine directory, re-enable th
 
 ```bash
 sudo systemctl restart sentinel-forge
-```
 ```
 
