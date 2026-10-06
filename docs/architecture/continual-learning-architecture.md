@@ -1,12 +1,3 @@
-### Part 2: Deep Systems Design (`architecture/*`)
-
-This section contains 5 architectural specifications detailing the systems design of `xinfer-forge`: the continual learning event loop, mathematical formulations of concept drift and adversarial poisoning, the closed-loop fleet flywheel, and the air-gapped execution model.
-
----
-
-### File: `xinfer-forge/docs/architecture/continual-learning-architecture.md`
-
-```markdown
 # Continual Learning Engine Architecture & Event Loop
 
 `xinfer-forge` operates as a decoupled, background continual learning daemon (`forge-cli auto-cycle`). It monitors curated data streams emitted by edge appliances, fine-tunes deep neural representations in-place, and enforces safety boundaries before deploying candidate weights.
@@ -62,5 +53,4 @@ Training neural models on multi-purpose edge appliances can compete with real-ti
 1. **Linux cgroup v2 Constraints:** `forge-cli` execution runs inside a dedicated slice (`sentinel-forge.slice`) capped at $50\%$ CPU quota and pinned to lower NUMA nodes.
 2. **Scheduling Priority:** Runs under `SCHED_IDLE` or `nice +19`, ensuring in-kernel eBPF packet mitigation ($< 0.84\,\mu\text{s}$) and live inference routines take precedence over retraining loops.
 3. **Dedicated Scratchpad RAM:** Training allocations are constrained to a fixed memory budget ($< 4.0\text{ GB}$), avoiding host swapping.
-```
 

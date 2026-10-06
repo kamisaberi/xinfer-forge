@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/architecture/the-concept-drift-problem.md`
-
-```markdown
 # The Concept Drift Problem in Cyber-Physical Networks
 
 A primary reason static intrusion detection systems fail in real-world industrial environments is **concept drift**. Normal operational traffic does not remain static over time; baseline distributions drift naturally due to software updates, operational reconfigurations, and physical process shifts.
@@ -52,5 +47,4 @@ Accuracy (%)
 ```
 
 By continually ingesting ambient flow batches, `xinfer-forge` updates the internal representation manifold to maintain sustained detection accuracy ($> 98.0\%$).
-```
 

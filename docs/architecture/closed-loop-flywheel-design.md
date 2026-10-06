@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/architecture/closed-loop-flywheel-design.md`
-
-```markdown
 # The Closed-Loop Active Learning Flywheel
 
 `xinfer-forge` operates as the central adaptation engine in an autonomous active learning flywheel. It connects edge inference appliances (`blackbox-sentinel`) and fleet orchestration hubs (`sentinel-nexus`) in a continuous improvement loop.
@@ -61,6 +56,3 @@ Instead of retraining on millions of redundant, obvious flows, the flywheel isol
 $$\text{Uncertainty Filter}(x) = \{ x \mid 0.40 \le f(x; \theta) \le 0.60 \}$$
 
 This focuses training computations on edge cases and emerging environmental variations, reducing compute requirements by up to **$94\%$**.
-```
-
----

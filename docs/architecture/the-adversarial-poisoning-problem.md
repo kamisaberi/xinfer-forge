@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/architecture/the-adversarial-poisoning-problem.md`
-
-```markdown
 # Mathematical Modeling of Adversarial Data Poisoning
 
 While continual learning solves concept drift, naive retraining creates a critical vulnerability: **Adversarial Data Poisoning** (also known as "boiling-the-frog" attacks).
@@ -55,5 +50,4 @@ Over $N$ retraining cycles, the decision boundary shifts until the full exploit 
 ```
 
 Even if an attacker injects subtle perturbations into the ambient training batches, the safety gate enforces that the model must maintain detection of historical exploits. If candidate weights exhibit performance regression on any historical attack, the model is rejected.
-```
 
