@@ -1,12 +1,3 @@
-### Part 10: AI Safety & Regulatory Compliance (`compliance/*`)
-
-This section contains 4 compliance audit guides and technical verification frameworks for `xinfer-forge`: satisfying the EU AI Act Article 15 mandates for high-risk cybersecurity AI, meeting NIST SP 800-218 SSDF model integrity requirements, logging immutable training audit records, and verifying zero PII leakage and zero cloud data egress.
-
----
-
-### File: `xinfer-forge/docs/compliance/eu-ai-act-article-15.md`
-
-```markdown
 # EU AI Act Article 15: Accuracy, Robustness & Anti-Poisoning Mandates
 
 Under the European Union Artificial Intelligence Act (**Regulation (EU) 2024/1689**), AI systems deployed in critical infrastructure (including digital networks, water, electricity, and gas management) are classified as **High-Risk AI Systems** (Annex III, Point 2).
@@ -56,6 +47,5 @@ forge-cli validate-safety --export-eu-ai-compliance /var/log/sentinel/eu_ai_act_
   "anti_poisoning_circuit": "ACTIVE_VERIFIED",
   "audit_result": "CONFORMANT"
 }
-```
 ```
 

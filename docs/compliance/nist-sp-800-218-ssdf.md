@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/compliance/nist-sp-800-218-ssdf.md`
-
-```markdown
 # NIST SP 800-218 Secure Software Development Framework (SSDF)
 
 The **NIST Special Publication 800-218** establishes the Secure Software Development Framework (SSDF) Version 1.1 for mitigating vulnerabilities across the software supply chain. In AI and machine learning architectures, SSDF applies directly to **Task PW.8: Protect Software from Unauthorized Access and Tampering**.
@@ -44,5 +39,4 @@ The **NIST Special Publication 800-218** establishes the Secure Software Develop
 
 ### Task PW.8.3: Secure Software Delivery Pipelines
 * **Enforcement:** Distribution between `xinfer-forge` and `sentinel-nexus` is conducted over authenticated mTLS channels using scoped JWT credentials.
-```
 

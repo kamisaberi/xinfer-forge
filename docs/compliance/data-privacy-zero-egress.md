@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/compliance/data-privacy-zero-egress.md`
-
-```markdown
 # Data Privacy, Zero-Egress & GDPR Non-PII Guarantees
 
 Continual active learning often raises data privacy concerns: does training on live network traffic leak sensitive personal data or proprietary credentials into the model's weights?
@@ -50,5 +45,4 @@ The 32-dimensional continuous feature vectors consumed by `TabularMAE` contain *
 
 * **Zero Cloud Data Egress:** Training, validation, compilation, and canary deployment execute 100% on-premises.
 * **GDPR Article 25 (Data Protection by Design):** Because raw personal data is never ingested into model weights, the model is not subject to "right-to-be-forgotten" parameter extraction vulnerabilities.
-```
 

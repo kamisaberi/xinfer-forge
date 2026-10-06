@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-forge/docs/compliance/auditing-training-runs.md`
-
-```markdown
 # Immutable Logging of Training Runs & Weight Lineage
 
 Regulatory compliance frameworks require detailed audit trails demonstrating when models were trained, what dataset was ingested, which hyperparameters were used, and whether safety verification passed.
@@ -60,5 +55,4 @@ Every completed adaptation cycle appends a record to `/var/log/sentinel/training
 The training audit log is anchored to **TPM 2.0 PCR 12**:
 * When a training cycle finishes, the SHA-256 hash of the audit record is extended into PCR 12 via `tpm2_pcrextend`.
 * If an attacker modifies historical audit records on disk, the calculated hash chain diverges from the TPM hardware register, providing mathematical proof of log tampering.
-```
 
