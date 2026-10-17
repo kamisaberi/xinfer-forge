@@ -2,6 +2,7 @@
 """
 xinfer-forge: Golden Attack Safety Gate
 Enforces strict recall thresholds on historical Golden Attack vectors before exporting retrained models.
+Updated to support Continual Learning Task Matrix (R_ij) evaluation.
 """
 
 import os
@@ -19,6 +20,9 @@ class GoldenGateVerdict:
     false_positive_rate: float
     threshold_required: float
     message: str
+    accuracy: float = 0.0
+    precision: float = 0.0
+    f1_score: float = 0.0
 
 
 class GoldenGateEvaluator:
@@ -69,11 +73,15 @@ class GoldenGateEvaluator:
 
         recall = tp / (tp + fn) if (tp + fn) > 0 else 0.0
         fpr = fp / (fp + tn) if (fp + tn) > 0 else 0.0
+        total_samples = tp + fp + tn + fn
+        accuracy = (tp + tn) / total_samples if total_samples > 0 else 0.0
+        precision = tp / (tp + fp) if (tp + fp) > 0 else 1.0
+        f1 = (2 * precision * recall) / (precision + recall) if (precision + recall) > 0 else 0.0
 
         passed = (recall >= required_recall) and (fpr <= self.max_fpr_threshold)
 
         msg = (
-            f"PASS: Recall={recall:.4f} >= {required_recall:.4f} | FPR={fpr:.4f} <= {self.max_fpr_threshold:.4f}"
+            f"PASS: Recall={recall:.4f} >= {required_recall:.4f} | FPR={fpr:.4f} <= {self.max_fpr_threshold:.4f} | F1={f1:.4f}"
             if passed else
             f"FAIL: Recall={recall:.4f} < {required_recall:.4f} or FPR={fpr:.4f} > {self.max_fpr_threshold:.4f}"
         )
@@ -83,5 +91,8 @@ class GoldenGateEvaluator:
             recall=recall,
             false_positive_rate=fpr,
             threshold_required=required_recall,
-            message=msg
+            message=msg,
+            accuracy=accuracy,
+            precision=precision,
+            f1_score=f1
         )
