@@ -1,0 +1,21 @@
+# Hyperparameter & Safety Gate Configuration for xinfer-forge
+# Path: xinfer-forge/configs/model_hyperparams.yaml
+
+model_architecture:
+  tabular_mae:
+    embedding_dim: 128
+    num_heads: 4
+    num_layers: 6
+    mask_ratio: 0.3
+    dropout: 0.1
+
+training:
+  batch_size: 256
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  epochs: 50
+
+safety_gate:
+  min_recall_threshold: 0.999     # Configurable recall tolerance (e.g., 0.999 or 1.0 for strict 100%)
+  max_false_positive_rate: 0.005  # Maximum allowed False Positive Rate (0.5%)
+  golden_dataset_path: "var/lib/sentinel-nexus/forge_datasets/golden_attacks.slab"
