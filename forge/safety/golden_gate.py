@@ -2,13 +2,13 @@
 """
 xinfer-forge: Golden Attack Safety Gate
 Enforces strict recall thresholds on historical Golden Attack vectors before exporting retrained models.
-Updated to support Continual Learning Task Matrix (R_ij) evaluation.
+Updated to support Continual Learning Task Matrix (R_ij) and Federated Weight Evaluation.
 """
 
 import os
 import yaml
 from dataclasses import dataclass
-from typing import Optional, Tuple
+from typing import Optional, Tuple, List
 import torch
 import torch.nn as nn
 
@@ -96,3 +96,17 @@ class GoldenGateEvaluator:
             precision=precision,
             f1_score=f1
         )
+
+    def evaluate_federated_weights(
+        self,
+        global_model: nn.Module,
+        client_state_dicts: List[dict],
+        eval_loader: torch.utils.data.DataLoader
+    ) -> Tuple[GoldenGateVerdict, float]:
+        """
+        Evaluates global model weights aggregated from federated client updates.
+        Returns the GoldenGateVerdict and Poisoning Impact Score.
+        """
+        verdict = self.evaluate_model(global_model, eval_loader)
+        poison_impact = max(0.0, self.min_recall_threshold - verdict.recall)
+        return verdict, poison_impact
