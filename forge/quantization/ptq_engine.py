@@ -16,7 +16,7 @@ try:
     import onnx
     from onnx import helper, TensorProto
     import onnxruntime as ort
-    from onnxruntime.quantization import quantize_dynamic, quantize_static, QuantType, CalibrationDataReader
+    from onnxruntime.quantization import quantize_dynamic, quantize_static, QuantType, QuantFormat, CalibrationDataReader
     HAS_ONNX_QUANT = True
 except ImportError:
     HAS_ONNX_QUANT = False
@@ -28,22 +28,18 @@ from forge.safety.golden_gate import GoldenGateEvaluator, GoldenGateVerdict
 def create_dummy_onnx_model(file_path: str, input_dim: int = 32) -> bool:
     """Auto-generates a valid FP32 ONNX neural model using pure ONNX protobuf helpers pinned to IR v8 / Opset 13."""
     try:
-        # 1. Define Input [Batch, input_dim] and Output [Batch, 2]
         X = helper.make_tensor_value_info('input', TensorProto.FLOAT, [None, input_dim])
         Y = helper.make_tensor_value_info('scores', TensorProto.FLOAT, [None, 2])
 
-        # 2. Create Initializer Weights (W: input_dim x 2) and Biases (B: 2)
         W_val = np.random.randn(input_dim, 2).astype(np.float32)
         B_val = np.zeros((2,), dtype=np.float32)
 
         W_init = helper.make_tensor('W', TensorProto.FLOAT, [input_dim, 2], W_val.flatten().tolist())
         B_init = helper.make_tensor('B', TensorProto.FLOAT, [2], B_val.flatten().tolist())
 
-        # 3. Create Graph Nodes: MatMul -> Add
         matmul_node = helper.make_node('MatMul', ['input', 'W'], ['matmul_out'])
         add_node = helper.make_node('Add', ['matmul_out', 'B'], ['scores'])
 
-        # 4. Construct Graph and Model
         graph_def = helper.make_graph(
             [matmul_node, add_node],
             'dummy_threat_model',
@@ -53,7 +49,7 @@ def create_dummy_onnx_model(file_path: str, input_dim: int = 32) -> bool:
         )
 
         model_def = helper.make_model(graph_def, producer_name='xinfer-forge')
-        model_def.ir_version = 8  # Pin IR version 8 to match ONNXRuntime max supported version 13
+        model_def.ir_version = 8
         model_def.opset_import[0].version = 13
 
         os.makedirs(os.path.dirname(os.path.abspath(file_path)), exist_ok=True)
@@ -127,7 +123,6 @@ class PtqQuantizationEngine:
         output_int8_onnx_path: str,
         input_dim: int = 32
     ) -> Tuple[bool, str]:
-        # Expand user tilde (~) and absolute paths
         input_fp32_onnx_path = os.path.abspath(os.path.expanduser(input_fp32_onnx_path))
         output_int8_onnx_path = os.path.abspath(os.path.expanduser(output_int8_onnx_path))
 
@@ -136,9 +131,8 @@ class PtqQuantizationEngine:
         print("==================================================================")
         print(f"[+] Input FP32 Model  : {input_fp32_onnx_path}")
         print(f"[+] Output INT8 Model : {output_int8_onnx_path}")
-        print(f"[+] Target Precision  : {self.precision} (Symmetry Scale S & Zero-Point Z)")
+        print(f"[+] Target Precision  : {self.precision} (QDQ Format - Scale S & Zero-Point Z)")
 
-        # Verify ONNX model validity or auto-generate valid model if stub/corrupt
         is_valid_onnx = False
         if os.path.exists(input_fp32_onnx_path) and os.path.getsize(input_fp32_onnx_path) > 100:
             try:
@@ -169,9 +163,9 @@ class PtqQuantizationEngine:
                 model_input=input_fp32_onnx_path,
                 model_output=output_int8_onnx_path,
                 calibration_data_reader=data_reader,
-                quant_format=QuantType.QInt8
+                quant_format=QuantFormat.QDQ
             )
-            print("[+] INT8 ONNX graph conversion completed (4x memory footprint reduction).")
+            print("[+] INT8 ONNX QDQ graph conversion completed (4x memory footprint reduction).")
         except Exception as err:
             print(f"[!] Static PTQ fallback to dynamic quantization: {err}")
             try:
@@ -183,7 +177,6 @@ class PtqQuantizationEngine:
             except Exception as dyn_err:
                 return False, f"Dynamic quantization failed: {dyn_err}"
 
-        # Normalize output model IR version before InferenceSession evaluation
         normalize_onnx_ir_version(output_int8_onnx_path)
 
         # 2. Evaluate INT8 Model against Golden Gate Safety Gate
