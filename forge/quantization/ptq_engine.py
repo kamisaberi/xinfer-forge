@@ -25,40 +25,45 @@ from forge.safety.golden_gate import GoldenGateEvaluator, GoldenGateVerdict
 
 
 def create_dummy_onnx_model(file_path: str, input_dim: int = 32) -> bool:
-    """Auto-generates a valid FP32 ONNX neural network model for testing if stub file is present."""
+    """Auto-generates a valid FP32 ONNX neural model using pure ONNX protobuf helpers."""
     try:
-        class DummyThreatModel(nn.Module):
-            def __init__(self, in_dim):
-                super().__init__()
-                self.net = nn.Sequential(
-                    nn.Linear(in_dim, 64),
-                    nn.ReLU(),
-                    nn.Linear(64, 2)
-                )
+        import onnx
+        from onnx import helper, TensorProto
 
-            def forward(self, x):
-                return self.net(x)
+        # 1. Define Input [Batch, input_dim] and Output [Batch, 2]
+        X = helper.make_tensor_value_info('input', TensorProto.FLOAT, [None, input_dim])
+        Y = helper.make_tensor_value_info('scores', TensorProto.FLOAT, [None, 2])
 
-        model = DummyThreatModel(input_dim)
-        model.eval()
-        dummy_input = torch.randn(1, input_dim, dtype=torch.float32)
+        # 2. Create Initializer Weights (W: input_dim x 2) and Biases (B: 2)
+        W_val = np.random.randn(input_dim, 2).astype(np.float32)
+        B_val = np.zeros((2,), dtype=np.float32)
+
+        W_init = helper.make_tensor('W', TensorProto.FLOAT, [input_dim, 2], W_val.flatten().tolist())
+        B_init = helper.make_tensor('B', TensorProto.FLOAT, [2], B_val.flatten().tolist())
+
+        # 3. Create Graph Nodes: MatMul -> Add -> Sigmoid
+        matmul_node = helper.make_node('MatMul', ['input', 'W'], ['matmul_out'])
+        add_node = helper.make_node('Add', ['matmul_out', 'B'], ['scores'])
+
+        # 4. Construct Graph and Model
+        graph_def = helper.make_graph(
+            [matmul_node, add_node],
+            'dummy_threat_model',
+            [X],
+            [Y],
+            [W_init, B_init]
+        )
+
+        model_def = helper.make_model(graph_def, producer_name='xinfer-forge')
+        model_def.opset_import[0].version = 13
 
         os.makedirs(os.path.dirname(os.path.abspath(file_path)), exist_ok=True)
-        torch.onnx.export(
-            model,
-            dummy_input,
-            file_path,
-            input_names=["input"],
-            output_names=["scores"],
-            dynamic_axes={"input": {0: "batch_size"}, "scores": {0: "batch_size"}},
-            opset_version=13
-        )
+        onnx.save(model_def, file_path)
         print(f"[+] [PtqEngine] Generated valid {input_dim}D FP32 ONNX model at: {file_path}")
         return True
     except Exception as err:
-        print(f"[-] [PtqEngine Error] Failed to generate valid ONNX model: {err}")
+        print(f"[-] [PtqEngine Error] Failed to generate ONNX model: {err}")
         return False
-
 
 class OnnxSlabCalibrationDataReader(CalibrationDataReader if HAS_ONNX_QUANT else object):
     def __init__(self, data_loader, input_name: str = "input"):
