@@ -2,7 +2,7 @@
 """
 xinfer-forge: Golden Attack Safety Gate
 Enforces strict recall thresholds on historical Golden Attack vectors before exporting retrained models.
-Updated to support ONNX INT8 model evaluation.
+Updated to support 2-class (32, 2) and 1-class (32, 1) ONNX tensor evaluation.
 """
 
 import os
@@ -68,14 +68,19 @@ class GoldenGateEvaluator:
                 if isinstance(outputs, tuple):
                     outputs = outputs[0]
 
-                scores = torch.sigmoid(outputs).squeeze()
-                preds = (scores >= 0.5).long()
-                targets = y_batch.long()
+                if outputs.ndim == 2 and outputs.shape[1] == 2:
+                    preds = torch.argmax(outputs, dim=1).long()
+                else:
+                    scores = torch.sigmoid(outputs).squeeze()
+                    preds = (scores >= 0.5).long()
 
-                tp += ((preds == 1) & (targets == 1)).sum().item()
-                fp += ((preds == 1) & (targets == 0)).sum().item()
-                tn += ((preds == 0) & (targets == 0)).sum().item()
-                fn += ((preds == 0) & (targets == 1)).sum().item()
+                targets = y_batch.long().view(-1)
+                preds = preds.view(-1)
+
+                tp += int(((preds == 1) & (targets == 1)).sum().item())
+                fp += int(((preds == 1) & (targets == 0)).sum().item())
+                tn += int(((preds == 0) & (targets == 0)).sum().item())
+                fn += int(((preds == 0) & (targets == 1)).sum().item())
 
         recall = tp / (tp + fn) if (tp + fn) > 0 else 0.0
         fpr = fp / (fp + tn) if (fp + tn) > 0 else 0.0
@@ -111,6 +116,7 @@ class GoldenGateEvaluator:
     ) -> GoldenGateVerdict:
         """
         Evaluates exported INT8/FP16 ONNX model files against Golden Attacks dataset.
+        Handles both 2-class (batch, 2) and 1-class (batch, 1) output tensor shapes.
         """
         required_recall = custom_min_recall if custom_min_recall is not None else self.min_recall_threshold
 
@@ -128,13 +134,20 @@ class GoldenGateEvaluator:
         for x_batch, y_batch in eval_loader:
             x_np = x_batch.cpu().numpy().astype(np.float32)
             outputs = session.run(None, {input_name: x_np})
-            scores = outputs[0].squeeze()
+            raw_scores = outputs[0]
 
-            if scores.ndim == 0:
-                scores = np.array([scores.item()])
+            # 2-class output [batch, 2] -> take argmax across class probabilities
+            if raw_scores.ndim == 2 and raw_scores.shape[1] == 2:
+                preds = np.argmax(raw_scores, axis=1).astype(int)
+            elif raw_scores.ndim == 2 and raw_scores.shape[1] == 1:
+                scores = 1.0 / (1.0 + np.exp(-raw_scores.squeeze(axis=1)))
+                preds = (scores >= 0.5).astype(int)
+            else:
+                scores = 1.0 / (1.0 + np.exp(-raw_scores.squeeze()))
+                preds = (scores >= 0.5).astype(int)
 
-            preds = (scores >= 0.5).astype(int)
-            targets = y_batch.cpu().numpy().astype(int)
+            targets = y_batch.cpu().numpy().astype(int).reshape(-1)
+            preds = preds.reshape(-1)
 
             tp += int(((preds == 1) & (targets == 1)).sum())
             fp += int(((preds == 1) & (targets == 0)).sum())
