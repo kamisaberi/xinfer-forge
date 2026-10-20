@@ -14,6 +14,7 @@ from typing import Tuple
 
 try:
     import onnx
+    from onnx import helper, TensorProto
     import onnxruntime as ort
     from onnxruntime.quantization import quantize_dynamic, quantize_static, QuantType, CalibrationDataReader
     HAS_ONNX_QUANT = True
@@ -25,11 +26,8 @@ from forge.safety.golden_gate import GoldenGateEvaluator, GoldenGateVerdict
 
 
 def create_dummy_onnx_model(file_path: str, input_dim: int = 32) -> bool:
-    """Auto-generates a valid FP32 ONNX neural model using pure ONNX protobuf helpers."""
+    """Auto-generates a valid FP32 ONNX neural model using pure ONNX protobuf helpers pinned to IR v8 / Opset 13."""
     try:
-        import onnx
-        from onnx import helper, TensorProto
-
         # 1. Define Input [Batch, input_dim] and Output [Batch, 2]
         X = helper.make_tensor_value_info('input', TensorProto.FLOAT, [None, input_dim])
         Y = helper.make_tensor_value_info('scores', TensorProto.FLOAT, [None, 2])
@@ -41,7 +39,7 @@ def create_dummy_onnx_model(file_path: str, input_dim: int = 32) -> bool:
         W_init = helper.make_tensor('W', TensorProto.FLOAT, [input_dim, 2], W_val.flatten().tolist())
         B_init = helper.make_tensor('B', TensorProto.FLOAT, [2], B_val.flatten().tolist())
 
-        # 3. Create Graph Nodes: MatMul -> Add -> Sigmoid
+        # 3. Create Graph Nodes: MatMul -> Add
         matmul_node = helper.make_node('MatMul', ['input', 'W'], ['matmul_out'])
         add_node = helper.make_node('Add', ['matmul_out', 'B'], ['scores'])
 
@@ -55,15 +53,30 @@ def create_dummy_onnx_model(file_path: str, input_dim: int = 32) -> bool:
         )
 
         model_def = helper.make_model(graph_def, producer_name='xinfer-forge')
+        model_def.ir_version = 8  # Pin IR version 8 to match ONNXRuntime max supported version 13
         model_def.opset_import[0].version = 13
 
         os.makedirs(os.path.dirname(os.path.abspath(file_path)), exist_ok=True)
         onnx.save(model_def, file_path)
-        print(f"[+] [PtqEngine] Generated valid {input_dim}D FP32 ONNX model at: {file_path}")
+        print(f"[+] [PtqEngine] Generated valid {input_dim}D FP32 ONNX model (IR v8, Opset 13) at: {file_path}")
         return True
     except Exception as err:
         print(f"[-] [PtqEngine Error] Failed to generate ONNX model: {err}")
         return False
+
+
+def normalize_onnx_ir_version(model_path: str):
+    """Clamps ONNX model IR version to <= 8 (Opset 13 compatible) to ensure ONNXRuntime compatibility."""
+    if not HAS_ONNX_QUANT or not os.path.exists(model_path):
+        return
+    try:
+        m = onnx.load(model_path)
+        if m.ir_version > 8:
+            m.ir_version = 8
+            onnx.save(m, model_path)
+    except Exception:
+        pass
+
 
 class OnnxSlabCalibrationDataReader(CalibrationDataReader if HAS_ONNX_QUANT else object):
     def __init__(self, data_loader, input_name: str = "input"):
@@ -129,11 +142,12 @@ class PtqQuantizationEngine:
         is_valid_onnx = False
         if os.path.exists(input_fp32_onnx_path) and os.path.getsize(input_fp32_onnx_path) > 100:
             try:
+                normalize_onnx_ir_version(input_fp32_onnx_path)
                 m = onnx.load(input_fp32_onnx_path)
                 onnx.checker.check_model(m)
                 is_valid_onnx = True
             except Exception as e:
-                print(f"[!] [PtqEngine Warning] Existing file is not a valid ONNX protobuf model ({e}).")
+                print(f"[!] [PtqEngine Warning] Existing file is not a valid ONNX model ({e}).")
 
         if not is_valid_onnx:
             print("[*] Generating valid PyTorch FP32 ONNX threat model for quantization...")
@@ -168,6 +182,9 @@ class PtqQuantizationEngine:
                 )
             except Exception as dyn_err:
                 return False, f"Dynamic quantization failed: {dyn_err}"
+
+        # Normalize output model IR version before InferenceSession evaluation
+        normalize_onnx_ir_version(output_int8_onnx_path)
 
         # 2. Evaluate INT8 Model against Golden Gate Safety Gate
         print("[+] Evaluating INT8 model against Golden Gate (0% recall loss tolerance)...")
