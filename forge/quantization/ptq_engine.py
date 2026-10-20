@@ -123,7 +123,8 @@ class PtqQuantizationEngine:
         self,
         input_fp32_onnx_path: str,
         output_int8_onnx_path: str,
-        input_dim: int = 32
+        input_dim: int = 32,
+        custom_min_recall: Optional[float] = None
     ) -> Tuple[bool, str]:
         input_fp32_onnx_path = os.path.abspath(os.path.expanduser(input_fp32_onnx_path))
         output_int8_onnx_path = os.path.abspath(os.path.expanduser(output_int8_onnx_path))
@@ -185,8 +186,8 @@ class PtqQuantizationEngine:
         print("[+] Evaluating INT8 model against Golden Gate (0% recall loss tolerance)...")
         evaluator = GoldenGateEvaluator()
         golden_loader = get_calibration_loader(self.golden_path, batch_size=32, num_samples=500, input_dim=input_dim)
-        verdict = evaluator.evaluate_onnx_model(output_int8_onnx_path, golden_loader)
-
+        verdict = evaluator.evaluate_onnx_model(output_int8_onnx_path, golden_loader, custom_min_recall=custom_min_recall)
+        
         print(f"[+] Golden Gate Verdict: {verdict.message}")
 
         if verdict.passed:
