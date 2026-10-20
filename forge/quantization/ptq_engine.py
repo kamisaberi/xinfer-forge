@@ -181,7 +181,7 @@ class PtqQuantizationEngine:
             print(f"          └── SLA Latency: Reduced from 75 us to < 20 us")
             print("==================================================================\n")
             return True, verdict.message
-        else,
+        else:
             print(f"[!] [REJECTED] INT8 Model failed recall safety gate: {verdict.message}")
             if os.path.exists(output_int8_onnx_path):
                 os.remove(output_int8_onnx_path)
