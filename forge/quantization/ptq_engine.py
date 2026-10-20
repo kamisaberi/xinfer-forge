@@ -31,7 +31,10 @@ def create_dummy_onnx_model(file_path: str, input_dim: int = 32) -> bool:
         X = helper.make_tensor_value_info('input', TensorProto.FLOAT, [None, input_dim])
         Y = helper.make_tensor_value_info('scores', TensorProto.FLOAT, [None, 2])
 
-        W_val = np.random.randn(input_dim, 2).astype(np.float32)
+        # Deterministic weights: Class 0 activated when feature 0 <= 0; Class 1 activated when feature 0 > 0
+        W_val = np.zeros((input_dim, 2), dtype=np.float32)
+        W_val[0, 0] = -10.0
+        W_val[0, 1] = 10.0
         B_val = np.zeros((2,), dtype=np.float32)
 
         W_init = helper.make_tensor('W', TensorProto.FLOAT, [input_dim, 2], W_val.flatten().tolist())
@@ -59,7 +62,6 @@ def create_dummy_onnx_model(file_path: str, input_dim: int = 32) -> bool:
     except Exception as err:
         print(f"[-] [PtqEngine Error] Failed to generate ONNX model: {err}")
         return False
-
 
 def normalize_onnx_ir_version(model_path: str):
     """Clamps ONNX model IR version to <= 8 (Opset 13 compatible) to ensure ONNXRuntime compatibility."""
