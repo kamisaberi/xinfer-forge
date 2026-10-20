@@ -45,7 +45,8 @@ class SlabCalibrationDataset(Dataset):
         if not self.features:
             print(f"[*] [CalibrationLoader] Generating {num_samples} synthetic calibration vectors ({default_dim}D)...")
             self.features = np.random.randn(num_samples, default_dim).astype(np.float32)
-            self.labels = np.random.choice([0, 1], size=num_samples).astype(np.float32)
+            # Deterministic label rule based on feature 0 for consistent test runs
+            self.labels = (self.features[:, 0] > 0.0).astype(np.float32)
         else:
             self.features = np.array(self.features, dtype=np.float32)
             self.labels = np.array(self.labels, dtype=np.float32)
