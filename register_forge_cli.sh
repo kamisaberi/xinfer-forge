@@ -37,7 +37,7 @@ if [ ! -d "${VENV_DIR}" ]; then
     mkdir -p /opt/sentinel-stack
     python3 -m venv "${VENV_DIR}"
     "${VENV_DIR}/bin/pip" install --upgrade pip setuptools wheel
-    "${VENV_DIR}/bin/pip" install --no-cache-dir numpy pyyaml torch onnx onnxruntime
+    "${VENV_DIR}/bin/pip" install --no-cache-dir  requests numpy pyyaml torch onnx onnxruntime scipy rich
 fi
 
 # 3. Create global executable wrapper in /usr/local/bin/forge-cli
