@@ -1,0 +1,16 @@
+# Continuous ML Fine-Tuning & Adaptation Configuration
+# Path: xinfer-forge/configs/finetune_profile.yaml
+
+finetune:
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  regularization_lambda: 0.01      # Penalizes weight drift from pre-trained base model
+  batch_size: 32
+  default_epochs: 5
+  auto_quantize_int8: true         # Automatically quantize to INT8 (<20us) on pass
+  input_dim: 32
+
+safety_gate:
+  enforce_golden_gate: true
+  min_recall_threshold: 0.990      # Minimum required recall on historical Golden Attacks
+  golden_attacks_path: "var/lib/sentinel-nexus/forge_datasets/golden_attacks.slab"
