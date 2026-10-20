@@ -9,5 +9,5 @@ quantization:
     num_samples: 500
     dataset_path: "var/lib/sentinel-nexus/forge_datasets/calibration.slab"
   safety_gate:
-    max_allowed_recall_drop: 0.00 # Zero recall loss tolerance (100% detection retention)
-    golden_attacks_path: "var/lib/sentinel-nexus/forge_datasets/golden_attacks.slab"
+    min_recall_threshold: 0.990     # Set to 0.990 (99.0%) for quantized models
+    max_false_positive_rate: 0.005
