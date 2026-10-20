@@ -1,0 +1,13 @@
+# Automated Post-Training Quantization (PTQ) Configuration
+# Path: xinfer-forge/configs/quantization_profile.yaml
+
+quantization:
+  engine: "ONNX_RUNTIME"          # ONNX_RUNTIME, OPENVINO_NNCF, TENSORRT
+  precision: "INT8"               # INT8, FP16
+  quant_format: "QOPERAND"        # QOPERAND (Scale & Zero-Point)
+  calibration:
+    num_samples: 500
+    dataset_path: "var/lib/sentinel-nexus/forge_datasets/calibration.slab"
+  safety_gate:
+    max_allowed_recall_drop: 0.00 # Zero recall loss tolerance (100% detection retention)
+    golden_attacks_path: "var/lib/sentinel-nexus/forge_datasets/golden_attacks.slab"
