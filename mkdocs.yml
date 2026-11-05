@@ -1,0 +1,140 @@
+site_name: xInfer Forge Documentation
+site_description: Continual Edge Active Learning, Self-Supervised Tabular MAE, and Golden Attacks Anti-Poisoning Safety Gate
+site_author: Aryorithm Technologies B.V.
+site_url: https://docs.aryorithm.com/forge/
+repo_name: kamisaberi/xinfer-forge
+repo_url: https://github.com/kamisaberi/xinfer-forge
+
+theme:
+  name: material
+  language: en
+  palette:
+    - scheme: slate
+      primary: amber
+      accent: orange
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+    - scheme: default
+      primary: amber
+      accent: orange
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.arithmatex:
+      generic: true
+  - tables
+  - attr_list
+  - md_in_html
+
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - Home: index.md
+  - Getting Started:
+      - Overview: getting-started/overview.md
+      - System Requirements: getting-started/system-requirements.md
+      - Installation: getting-started/installation.md
+      - Quickstart Adaptation: getting-started/quickstart-first-adaptation.md
+      - Verifying Setup: getting-started/verifying-setup.md
+      - Architecture at a Glance: getting-started/architecture-at-a-glance.md
+  - Architecture:
+      - Continual Learning Engine: architecture/continual-learning-architecture.md
+      - Concept Drift Problem: architecture/the-concept-drift-problem.md
+      - Adversarial Poisoning Problem: architecture/the-adversarial-poisoning-problem.md
+      - Closed-Loop Flywheel: architecture/closed-loop-flywheel-design.md
+      - Air-Gapped Execution Model: architecture/air-gapped-execution-model.md
+  - Self-Supervised Engine:
+      - MAE Topology: self-supervised-engine/mae-architecture.md
+      - Stochastic Masking Strategy: self-supervised-engine/stochastic-masking-strategy.md
+      - InfoNCE Contrastive Learning: self-supervised-engine/infonce-contrastive-learning.md
+      - Latent Embedding Space: self-supervised-engine/latent-embedding-space.md
+      - Loss Optimization Math: self-supervised-engine/loss-optimization-math.md
+      - Neural Layer Specifications: self-supervised-engine/neural-layer-specifications.md
+      - Hyperparameter Tuning: self-supervised-engine/hyperparameter-tuning.md
+  - Safety Regression Gate:
+      - Safety Gate Philosophy: safety-regression-gate/safety-gate-philosophy.md
+      - Golden Attacks Corpus: safety-regression-gate/golden-attacks-corpus.md
+      - Threat Categories Covered: safety-regression-gate/threat-categories-covered.md
+      - Zero-Tolerance Math: safety-regression-gate/zero-tolerance-math.md
+      - Automated Purge Circuit: safety-regression-gate/automated-purge-circuit.md
+      - Alert Dispatch on Regression: safety-regression-gate/alert-dispatch-on-regression.md
+      - TPM PCR Sealing: safety-regression-gate/tpm-pcr-sealing.md
+  - Compilation & Staging:
+      - ONNX Export Pipeline: compilation-and-staging/onnx-export-pipeline.md
+      - INT8 PTQ Quantization: compilation-and-staging/int8-ptq-quantization.md
+      - Dynamic Batch Axes: compilation-and-staging/dynamic-batch-axes.md
+      - SHA-256 Checksums: compilation-and-staging/cryptographic-hashing-sha256.md
+      - Nexus REST Staging API: compilation-and-staging/nexus-rest-staging-api.md
+      - Staged Rollout Lifecycle: compilation-and-staging/staged-rollout-lifecycle.md
+  - Nexus Integration:
+      - Nexus Bridge Architecture: nexus-integration/nexus-bridge-architecture.md
+      - Dataset Discovery Watcher: nexus-integration/dataset-discovery-watcher.md
+      - Curated CSV Batch Parsing: nexus-integration/parsing-curated-csv-batches.md
+      - Active Learning Uncertainty Gate: nexus-integration/active-learning-uncertainty-gate.md
+      - Automated Wrapper Script: nexus-integration/automated-wrapper-script.md
+      - Closed-Loop Validation: nexus-integration/closed-loop-validation-testing.md
+  - CLI Reference:
+      - CLI Overview: cli-reference/cli-overview.md
+      - forge-cli train: cli-reference/command-train.md
+      - forge-cli validate-safety: cli-reference/command-validate-safety.md
+      - forge-cli export-onnx: cli-reference/command-export-onnx.md
+      - forge-cli stage: cli-reference/command-stage.md
+      - forge-cli auto-cycle: cli-reference/command-auto-cycle.md
+      - Configuration Manifests: cli-reference/configuration-files.md
+  - Tutorials:
+      - Training on Ambient NetFlow: tutorials/training-on-ambient-netflow.md
+      - Adding Custom Golden Attacks: tutorials/adding-custom-golden-attacks.md
+      - Tuning MAE Masking Ratio: tutorials/tuning-mae-masking-ratio.md
+      - Recovering from Poisoning Alerts: tutorials/recovering-from-poisoning-alerts.md
+      - Deploying Forge in VMware: tutorials/deploying-forge-in-vmware.md
+  - Benchmarking:
+      - Methodology: benchmarking/methodology.md
+      - Drift Adaptation Curves: benchmarking/drift-adaptation-curves.md
+      - Poisoning Resilience Experiments: benchmarking/poisoning-resilience-experiments.md
+      - CPU vs. GPU Training Speed: benchmarking/cpu-vs-gpu-training-speed.md
+      - Resource Footprint: benchmarking/resource-footprint.md
+  - Compliance:
+      - EU AI Act Article 15: compliance/eu-ai-act-article-15.md
+      - NIST SP 800-218 SSDF: compliance/nist-sp-800-218-ssdf.md
+      - Auditing Training Runs: compliance/auditing-training-runs.md
+      - Data Privacy & Zero-Egress: compliance/data-privacy-zero-egress.md
+  - Troubleshooting:
+      - Loss Divergence & NaNs: troubleshooting/loss-divergence-and-nans.md
+      - Safety Gate Rejection Guide: troubleshooting/safety-gate-rejection-guide.md
+      - Nexus Staging Failures: troubleshooting/nexus-staging-failures.md
+      - Python PEP 668 venv Issues: troubleshooting/python-pep668-venv-issues.md
+      - FAQ: troubleshooting/faq.md
+      - Support & SLAs: troubleshooting/support.md
