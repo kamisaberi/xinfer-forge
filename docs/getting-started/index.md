@@ -1,21 +1,12 @@
 # Getting Started
 
-> **Status:** Draft — placeholder content. Final technical prose is forthcoming.
+Welcome to the **xInfer Forge (`forge-cli`)** Getting Started guide. This section provides complete walkthroughs for setting up, compiling, and executing the Tier 4 continual learning engine.
 
-Section overview for Getting Started — start with any guide below.
+## Section Navigation
 
-- [Architecture at a Glance](./architecture-at-a-glance.md)
-
-- [Installation](./installation.md)
-
-- [Overview](./overview.md)
-
-- [Quickstart: First Adaptation](./quickstart-first-adaptation.md)
-
-- [System Requirements](./system-requirements.md)
-
-- [Verifying Setup](./verifying-setup.md)
-
----
-
-*Part of the xinfer-forge documentation set.*
+- [Overview & Mission](./overview.md): Continual active learning, overcoming concept drift, and the 3 operational invariants.
+- [System Requirements](./system-requirements.md): Hardware sizing guidelines (CPU vs GPU), RAM budgets, and Python dependencies.
+- [Installation](./installation.md): Isolated virtual environment setup (`/opt/sentinel-stack/venv`) complying with PEP 668.
+- [Quickstart Adaptation](./quickstart-first-adaptation.md): 5-minute quickstart executing training and safety validation on a mock NetFlow batch.
+- [Verifying Setup](./verifying-setup.md): Automated diagnostic self-test (`forge-cli diag`) and ONNX Opset 17 export verification.
+- [Architecture at a Glance](./architecture-at-a-glance.md): Visual topology diagram illustrating the active learning flywheel and safety gate.

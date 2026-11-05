@@ -1,23 +1,13 @@
 # Safety Regression Gate
 
-> **Status:** Draft — placeholder content. Final technical prose is forthcoming.
+Before any candidate model can be deployed, it must pass through an immutable, zero-tolerance Golden Attacks Safety Gate (`configs/safety/golden_attacks.yaml`).
 
-Section overview for Safety Regression Gate — start with any guide below.
+## Section Navigation
 
-- [Alert Dispatch on Regression](./alert-dispatch-on-regression.md)
-
-- [Automated Purge Circuit](./automated-purge-circuit.md)
-
-- [Golden Attacks Corpus](./golden-attacks-corpus.md)
-
-- [Safety Gate Philosophy](./safety-gate-philosophy.md)
-
-- [Threat Categories Covered](./threat-categories-covered.md)
-
-- [TPM PCR Sealing](./tpm-pcr-sealing.md)
-
-- [Zero-Tolerance Math](./zero-tolerance-math.md)
-
----
-
-*Part of the xinfer-forge documentation set.*
+- [Safety Gate Philosophy](./safety-gate-philosophy.md): The zero-tolerance regression invariant preventing catastrophic forgetting and poisoning.
+- [Golden Attacks Corpus](./golden-attacks-corpus.md): YAML manifest schema (`golden_attacks.yaml`) storing 52 normalized historical exploit vectors.
+- [Threat Categories Covered](./threat-categories-covered.md): Coverage across industrial OT sabotage (Stuxnet, Triton, Industroyer) and C2 beacons.
+- [Zero-Tolerance Math](./zero-tolerance-math.md): Strict logical conjunction formulation ($S(\theta^*) = \bigwedge \mathbb{I}(\mathcal{E} > \tau)$).
+- [Automated Purge Circuit](./automated-purge-circuit.md): Automated checkpoint unlinking and anti-recovery file overwrites upon audit failure.
+- [Alert Dispatch on Regression](./alert-dispatch-on-regression.md): CISO incident escalation protocols and CSV dataset quarantine.
+- [TPM PCR Sealing](./tpm-pcr-sealing.md): Sealing the golden attack corpus hash against physical TPM 2.0 PCR 7 and PCR 14.

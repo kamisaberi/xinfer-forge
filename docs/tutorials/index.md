@@ -1,19 +1,11 @@
-# Tutorials
+# Tutorials & Walkthroughs
 
-> **Status:** Draft — placeholder content. Final technical prose is forthcoming.
+Hands-on tutorials demonstrating continual learning workflows, custom safety corpus creation, and hyperparameter tuning.
 
-Section overview for Tutorials — start with any guide below.
+## Section Navigation
 
-- [Adding Custom Golden Attacks](./adding-custom-golden-attacks.md)
-
-- [Deploying Forge in VMware](./deploying-forge-in-vmware.md)
-
-- [Recovering from Poisoning Alerts](./recovering-from-poisoning-alerts.md)
-
-- [Training on Ambient NetFlow](./training-on-ambient-netflow.md)
-
-- [Tuning MAE Masking Ratio](./tuning-mae-masking-ratio.md)
-
----
-
-*Part of the xinfer-forge documentation set.*
+- [Training on Ambient NetFlow](./tutorials/training-on-ambient-netflow.md): End-to-end retraining on raw industrial network captures.
+- [Adding Custom Golden Attacks](./tutorials/adding-custom-golden-attacks.md): Capturing and embedding site-specific zero-day signatures into `golden_attacks.yaml`.
+- [Tuning MAE Masking Ratio](./tutorials/tuning-mae-masking-ratio.md): Tuning masking ratios ($p_{\text{mask}}$) for SCADA vs. IT network traffic.
+- [Recovering from Poisoning Alerts](./tutorials/recovering-from-poisoning-alerts.md): Investigating and recovering from safety gate poisoning rejections.
+- [Deploying Forge in VMware](./tutorials/deploying-forge-in-vmware.md): Configuring Forge inside the `sentinel-matrix` digital twin mesh.

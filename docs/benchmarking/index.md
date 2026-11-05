@@ -1,19 +1,11 @@
-# Benchmarking
+# Benchmarking & Performance Evaluation
 
-> **Status:** Draft — placeholder content. Final technical prose is forthcoming.
+Empirical benchmark results evaluating adaptation speeds, multi-month drift stability, and adversarial poisoning resilience.
 
-Section overview for Benchmarking — start with any guide below.
+## Section Navigation
 
-- [CPU vs. GPU Training Speed](./cpu-vs-gpu-training-speed.md)
-
-- [Drift Adaptation Curves](./drift-adaptation-curves.md)
-
-- [Benchmark Methodology](./methodology.md)
-
-- [Poisoning Resilience Experiments](./poisoning-resilience-experiments.md)
-
-- [Resource Footprint](./resource-footprint.md)
-
----
-
-*Part of the xinfer-forge documentation set.*
+- [Benchmarking Methodology](./methodology.md): Dynamic drift simulation protocols across 180-day network timelines.
+- [Drift Adaptation Curves](./drift-adaptation-curves.md): 6-month accuracy comparison (Static Model vs. `xinfer-forge`).
+- [Poisoning Resilience Experiments](./poisoning-resilience-experiments.md): Empirical proof of safety gate intervention during "boiling-the-frog" attacks.
+- [CPU vs. GPU Training Speed](./cpu-vs-gpu-training-speed.md): Wall-clock execution time and energy benchmarks across edge CPUs and GPUs.
+- [Resource Footprint](./resource-footprint.md): RAM footprint breakdown, PyTorch garbage collection, and checkpoint retention policies.
